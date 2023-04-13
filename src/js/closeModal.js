@@ -1,22 +1,23 @@
 //May change, if the name in HTML will be different
+
+// import { hideModalOnEscape, hideModalOnCLick } from "./modalClose.js";
+// window.addEventListener("keydown", hideModalOnEscape);
+// window.addEventListener("click", hideModalOnCLick);
+// closeBtnEl.addEventListener("click", hideModal);
+
 const backdropEl = document.querySelector(".backdrop");
 const closeBtnEl = document.querySelector(".close-button");
 const modalEl = document.querySelector(".modal");
 
 //Hides modal if Escape button is pressed
 export function hideModalOnEscape(e) {
-  if (e.code === "Escape") {
-    //e.code === 'Escape' && isOpen === true
-    hideModal();
-  }
+    e.code === "Escape" &&  hideModal();
 }
 
 //Hides modal if clicked outside of the modal
 export function hideModalOnCLick(e) {
-  if (e.target !== modalEl) {
-    hideModal();
-  }
-  e.stopPropagation();
+    e.target !== modalEl && hideModal();
+    e.stopPropagation();
 }
 
 //HidesModal
