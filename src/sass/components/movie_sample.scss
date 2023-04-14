@@ -1,3 +1,18 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .movie-item {
     margin: 0 auto;
     width: 280px;
@@ -49,7 +64,6 @@
   }
   
   .movie-item__text {
-    margin: 0;
     color: #b92f2c;
   }
   
