@@ -1,4 +1,19 @@
-.movie-container {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.movie-item {
     margin: 0 auto;
     width: 280px;
     height: 443px;
@@ -15,7 +30,7 @@
     }
   }
   
-  .movie-container__img {
+  .movie-item__img {
     margin: 0;
     width: 280px;
     height: 402px;
@@ -32,8 +47,8 @@
     }
   }
   
-  .movie-container__title,
-  .movie-container__text {
+  .movie-item__title,
+  .movie-item__text {
     font-size: 12px;
     line-height: 1.16;
     text-transform: uppercase;
@@ -48,7 +63,7 @@
     }
   }
   
-  .movie-container__text {
+  .movie-item__text {
     color: #b92f2c;
   }
   
