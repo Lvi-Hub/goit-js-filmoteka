@@ -1,7 +1,9 @@
-.movie-container {
+.movie-item {
     margin: 0 auto;
     width: 280px;
     height: 443px;
+
+    list-style: none;
   
   @media (min-width: 768px) {
       width: 336px;
@@ -15,7 +17,7 @@
     }
   }
   
-  .movie-container__img {
+  .movie-item__img {
     margin: 0;
     width: 280px;
     height: 402px;
@@ -32,8 +34,8 @@
     }
   }
   
-  .movie-container__title,
-  .movie-container__text {
+  .movie-item__title,
+  .movie-item__text {
     font-size: 12px;
     line-height: 1.16;
     text-transform: uppercase;
@@ -48,7 +50,7 @@
     }
   }
   
-  .movie-container__text {
+  .movie-item__text {
     color: #b92f2c;
   }
   
