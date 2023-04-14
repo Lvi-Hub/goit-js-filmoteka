@@ -1,0 +1,256 @@
+:root {
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: grey;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.list {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.movie-card {
+    position: absolute;
+
+    left: 50%;
+    padding: 48px 20px;
+    transform: translate(-50%, 0);
+
+    width: 280px;
+    background-color: #fff;
+}
+
+@media (min-width: 768px) {
+    .movie-card {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        padding: 40px 72px 64px 36px;
+
+        width: 704px;
+        min-height: 552px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .movie-card {
+        padding: 40px 12px;
+        width: 806px;
+        min-height: 558px;
+    }
+}
+
+.movie-card__img {
+    margin-bottom: 20px;
+    width: 240px;
+    height: 357px;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .movie-card__img {
+        margin-right: 68px;
+        width: 264px;
+        height: 373.55px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .movie-card__img {
+        margin-right: 16px;
+        width: 375px;
+        height: 478px;
+    }
+}
+
+.movie-card__info__title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1280px) {
+    .movie-card__info__title {
+        font-size: 30px;
+        line-height: 1.16;
+    }
+}
+
+.movie-card__info__details {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.33;
+}
+
+.movie-card__info__details-headers {
+    margin-right: 41px;
+}
+
+@media (min-width: 1280px) {
+    .movie-card__info__details-headers {
+        margin-right: 85px;
+    }
+}
+
+.movie-card__info__details-header:not(:last-of-type),
+.movie-card__info__details-text:not(:last-of-type) {
+    margin-bottom: 8px;
+}
+
+.movie-card__info__details-headers {
+    color: #8c8c8c;
+}
+
+.movie-card__info__details-span {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    text-align: center;
+
+    border-radius: 5px;
+}
+
+.info-details__vote {
+    background: #b92f2c;
+    color: #fff;
+}
+
+.info-details__votes {
+    background: #f7f7f7;
+}
+
+.movie-card__info__details-original-title {
+    text-transform: uppercase;
+}
+
+.movie-card__info__small-title {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.33;
+}
+
+.movie-card__info__small-text {
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.66;
+}
+
+.movie-card__buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.movie-card__button {
+    padding: 10px 16px;
+    border-radius: 100px;
+
+    font-size: 10px;
+    line-height: 1.16;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .movie-card__button {
+        padding: 12px 22px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .movie-card__button {
+        padding: 14px 32px;
+        font-size: 12px;
+    }
+}
+
+.movie-card__button-watched {
+    background: #b92f2c;
+    color: #fff;
+    border: 1px solid transparent;
+
+    transition: background 250ms var(--cubic), color 250ms var(--cubic),
+        border 250ms var(--cubic);
+}
+
+.movie-card__button-queue {
+    background: #fff;
+    color: #b92f2c;
+    border: 1px solid #000000;
+
+    transition: background 250ms var(--cubic), color 250ms var(--cubic),
+        border 250ms var(--cubic);
+}
+
+.movie-card__buttons:hover .movie-card__button,
+.movie-card__buttons:focus .movie-card__button {
+    background: #fff;
+    color: #b92f2c;
+    border: 1px solid #000000;
+}
+
+.movie-card__buttons .movie-card__button-queue:hover,
+.movie-card__buttons .movie-card__button-queue:focus {
+    background: #b92f2c;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.movie-card__buttons .movie-card__button-watched:hover,
+.movie-card__buttons .movie-card__button-watched:focus {
+    background: #b92f2c;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.movie-card__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    margin: 8px 8px 0 0;
+
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.movie-card__close-svg {
+    position: absolute;
+    top: -1.5px;
+    right: 0%;
+
+    transition: fill 250ms var(--cubic);
+}
+
+.movie-card__close-btn:hover .movie-card__close-svg,
+.movie-card__close-btn:focus .movie-card__close-svg {
+    fill: #b92f2c;
+}
