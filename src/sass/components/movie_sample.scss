@@ -1,0 +1,54 @@
+.movie-container {
+    margin: 0 auto;
+    width: 280px;
+    height: 443px;
+  
+  @media (min-width: 768px) {
+      width: 336px;
+      height: 494px;
+    }
+  
+    @media (min-width: 1280px) {
+        margin: 0;
+        width: 395px;
+        height: 634px;
+    }
+  }
+  
+  .movie-container__img {
+    margin: 0;
+    width: 280px;
+    height: 402px;
+    border-radius: 5px;
+  
+  @media (min-width: 768px) {
+      width: 336px;
+      height: 455px;
+  }
+  
+  @media (min-width: 1280px) {
+      width: 395px;
+      height: 574px;
+    }
+  }
+  
+  .movie-container__title,
+  .movie-container__text {
+    font-size: 12px;
+    line-height: 1.16;
+    text-transform: uppercase;
+  
+  @media (min-width: 768px) {
+      line-height: 1.33;
+  }
+  
+  @media (min-width: 1280px) {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+  
+  .movie-container__text {
+    color: #b92f2c;
+  }
+  
