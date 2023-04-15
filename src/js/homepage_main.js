@@ -1,7 +1,10 @@
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
 import { addEventlListenertoFilmCard } from "./modal-about";
-const moviesGenres = [
+
+
+
+export const moviesGenres = [
   { id: 28, name: "Action" },
   { id: 12, name: "Adventure" },
   { id: 16, name: "Animation" },
@@ -63,11 +66,11 @@ async function getPopularMovies() {
 
 getPopularMovies()
 
-function getGenreName(genreId) {
+export function getGenreName(genreId) {
   return moviesGenres.find(({ id }) => id === genreId).name;
 }
 
-function checkArrlength(arr) {
+export function checkArrlength(arr) {
     let changedGenres = arr;
     if(arr.length > 2){
         changedGenres = arr.splice(0,2);
