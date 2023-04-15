@@ -14,7 +14,11 @@
     color: var(--color-grey-about);
 }
 
-.students-icon {
+.heart-left{
+    margin-left: 10px;
+}
+
+.students-span {
     text-decoration: underline;
     margin-left: 10px;
     line-height: calc(16/14);
@@ -30,4 +34,22 @@
    
 }
 
+.red-heart {
+    animation: pulse-red 2s infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes pulse-red {
+    0% {
+      transform: scale(0.95);
+    }
+    
+    70% {
+      transform: scale(1.5);
+    }
+    
+    100% {
+      transform: scale(0.95);
+    }
+  }
 
