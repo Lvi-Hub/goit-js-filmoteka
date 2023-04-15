@@ -1,3 +1,4 @@
+// JavaScript
 const btnUp = {
   el: document.querySelector('.btn-up'),
   addAnimation() {
