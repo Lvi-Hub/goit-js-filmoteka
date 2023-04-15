@@ -30,3 +30,18 @@
 //   background-size: cover;
 //   background-position: center;
 // }
+
+//РОЗМІТКА ДЛЯ СТВОРЕННЯ ГАЛЕРЕЇ ФІЛЬМІВ БІБЛІОТЕКИ КОРИСТУВАЧА.
+//CSS ДОДАНО. ПОТРІБНО ЛИШЕ ПІДСТАВИТИ У ЦЮ РОЗМІТКУ ВІДПОВІДНІ ДАНІ ІЗ СХОВИЩА
+
+// return `<li class="movie-item">
+// <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}"
+// alt="movie poster" loading="lazy" class="movie-item__img" />
+// <h2 class="movie-item__title">${title}</h2>
+// <p class="movie-item__text">
+// <span class="movie-item__genre">${genreResult}</span>| 
+// <span class="movie-item__year">${release_date.slice(0, 4)}</span>
+// </p>
+// </li>`
+// }).join('');
+// }

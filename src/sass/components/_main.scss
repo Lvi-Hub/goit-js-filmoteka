@@ -1,0 +1,82 @@
+.popular-films, .favorite-film {
+      background-color: var(--white-general);
+}
+
+.film-list, .favorite-film-list {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   @include tablet {
+         gap: 32px;
+}
+            @include desktop {
+         gap: 16px;
+            }
+         }
+
+.movie-item {
+   width: 100%; 
+
+   @include tablet {
+      flex-basis: calc((100% - 32px) / 2);
+      width: 336px;
+      height: 494px;
+   }
+
+      @include desktop {
+      flex-basis: calc((100% - 32px) / 3);
+      margin-bottom: 16px;
+      width: 395px;
+      height: 634px;
+   }
+}
+
+.movie-item:hover {
+   scale: 1.02;
+}
+
+
+.movie-item__img {
+   width:100%;
+   // width: 280px;
+   // height: 402px;
+   border-radius: 5px;
+   overflow: hidden;
+   margin-bottom: 10px;
+
+      @include tablet {
+      width: 336px;
+      height: 455px;
+      margin-bottom: 8px;
+   }
+      @include desktop {
+      width: 395px;
+      height: 574px;
+      margin-bottom: 12px;
+   }
+}
+
+.movie-item__title,
+.movie-item__text {
+   font-size: 12px;
+   font-weight: 500;
+   line-height: 1.17;
+
+   @include tablet {
+      line-height: 1.33;
+   }
+
+       @include desktop {
+      font-size: 20px;
+      line-height: 1.2;
+   }
+}
+.movie-item__title {
+      text-transform: uppercase;
+
+}
+
+.movie-item__text {
+   color: #b92f2c;
+}
