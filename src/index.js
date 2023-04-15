@@ -2,5 +2,6 @@
 // Далі кожен працює у своєму файлі !!!
 
 import './js/example';
+import './js/btn-up';
 
 

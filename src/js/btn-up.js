@@ -1,49 +1,39 @@
-.scroll-item{
-    width: 100%;
-    height: 100%;
-    fill: #85a279;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transform: rotate(270deg);
+const btnUp = {
+  el: document.querySelector('.btn-up'),
+  addAnimation() {
+    this.el.classList.add('fade-in'); // добавляем класс с анимацией
+    this.el.style.opacity = 1; // устанавливаем опасити в 1, чтобы кнопка была видимой
+  },
+  show() {
+    this.el.classList.remove('btn-up_hide');
+  },
+  hide() {
+    this.el.classList.add('btn-up_hide');
+  },
+  addEventListener() {
+    let isVisible = false; // флаг для отслеживания состояния видимости кнопки
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      
+      // Если страница прокручена больше чем на 400px и кнопка еще не видима
+      if (scrollY > 400 && !isVisible) {
+        isVisible = true;
+        this.addAnimation(); // вызываем функцию addAnimation для проигрывания анимации
+      } else if (scrollY <= 400 && isVisible) { // Если страница прокручена меньше или равно 400px и кнопка видима
+        isVisible = false;
+        this.el.style.opacity = 0; // устанавливаем опасити в 0, чтобы скрыть кнопку
+      }
+    });
+    
+    document.querySelector('.btn-up').onclick = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
 }
-.btn-up {
-    position: fixed;
-    background-color: #f8d24e;
-    right: 20px;
-    bottom: 20px;
-    border-radius: 22px;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    border: none;
-  }
-  
-  .btn-up::before {
-    content: "";
-    text-align: center;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 12px;
-    top: 12px;
-  }
-  .btn-up_hide {
-    display: none;
-  }
-  
-  .bounce-out-down {
-    animation: bounce-out-down 2s ease infinite;
-  }
-  @keyframes bounce-out-down {
-    0% { transform: translateY(1); }
-    20% {
-      opacity: 1;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-  }
-  .bounce-out-down:hover{
-    animation: blocks-main .5s forwards;
-  }
+
+btnUp.addEventListener();
