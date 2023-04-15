@@ -2,5 +2,5 @@
 // Далі кожен працює у своєму файлі !!!
 
 import './js/example';
+import './js/homepage_main';
 import './js/modal-about';
-
