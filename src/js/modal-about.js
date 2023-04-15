@@ -12,11 +12,12 @@ function fetchFilms(id) {
 }
 
 
-const filmCardElements = document.querySelectorAll('[data-film]');
+const filmCardElements = document.querySelectorAll('[movie-id]');
+console.log(filmCardElements)
 filmCardElements.forEach(element => {
   element.addEventListener('click', event => {
     card.classList.remove('hidden')
-      const idFilm = event.currentTarget.getAttribute('data-film');
+    const idFilm = event.currentTarget.getAttribute('movie-id');
     fetchFilms(idFilm).then((data) => {
       fillModal(data);
      })
