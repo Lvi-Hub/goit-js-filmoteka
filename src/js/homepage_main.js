@@ -79,10 +79,10 @@ export function checkArrlength(arr) {
 }
 
 function makeMarkupPopularMov(movieData) {
-    return movieData.map(({release_date, title, genre_ids, poster_path}) => {
+    return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
       const genresArr = genre_ids.map((id) => getGenreName(id));
       const genreResult = checkArrlength(genresArr).join(', ');
-      return `<li class="movie-item">
+      return `<li class="movie-item"  movie-id="${id}">
     <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}" 
     alt="movie poster" loading="lazy" class="movie-item__img" />
     <h2 class="movie-item__title">${title}</h2>
