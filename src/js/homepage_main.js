@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
+import { addEventlListenertoFilmCard } from "./modal-about";
 const moviesGenres = [
   { id: 28, name: "Action" },
   { id: 12, name: "Adventure" },
@@ -53,7 +54,8 @@ async function getPopularMovies() {
       console.log(movieData);
 
       filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
-
+     addEventlListenertoFilmCard();
+     
    } catch (error) {
      console.log(error);
    }
@@ -89,4 +91,5 @@ function makeMarkupPopularMov(movieData) {
       <span class="movie-item__year">${release_date.slice(0, 4)}</span>
     </p>
   </li>`}).join('');
-    }
+}
+    
