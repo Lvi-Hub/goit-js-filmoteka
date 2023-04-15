@@ -1,0 +1,33 @@
+.footer{
+    width: 100%;
+    background: var(--color-footer-bg);
+}
+.footer-container {
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
+.footer-text {
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-grey-about);
+}
+
+.students-icon {
+    text-decoration: underline;
+    margin-left: 10px;
+    line-height: calc(16/14);
+    align-items: center;
+    color: var(--color-grey-about);
+}
+.span-text {
+    @media screen and (max-width: 768px) 
+    { 
+        display: inline-block; 
+        margin-top: 12px; 
+    }
+   
+}
+
+
