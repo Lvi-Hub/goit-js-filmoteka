@@ -1,55 +1,52 @@
-.footer{
-    width: 100%;
-    background: var(--color-footer-bg);
+.footer {
+  width: 100%;
+  background: var(--color-footer-bg);
 }
 .footer-container {
-    padding-top: 28px;
-    padding-bottom: 28px;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .footer-text {
-    flex-wrap: nowrap;
-    justify-content: center;
-    text-align: center;
-    color: var(--color-grey-about);
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-grey-about);
 }
 
-.heart-left{
-    margin-left: 10px;
+.heart-left {
+  margin-left: 10px;
 }
 
 .students-span {
-    text-decoration: underline;
-    margin-left: 10px;
-    line-height: calc(16/14);
-    align-items: center;
-    color: var(--color-grey-about);
+  text-decoration: underline;
+  margin-left: 10px;
+  line-height: calc(16 / 14);
+  align-items: center;
+  color: var(--color-grey-about);
 }
 .span-text {
-    @media screen and (max-width: 768px) 
-    { 
-        display: inline-block; 
-        margin-top: 12px; 
-    }
-   
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+    margin-top: 12px;
+  }
 }
 
 .red-heart {
-    animation: pulse-red 2s infinite;
-    transform-origin: center;
-  }
-  
-  @keyframes pulse-red {
-    0% {
-      transform: scale(0.95);
-    }
-    
-    70% {
-      transform: scale(1.5);
-    }
-    
-    100% {
-      transform: scale(0.95);
-    }
+  animation: pulse-red 2s infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
   }
 
+  70% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
+}
