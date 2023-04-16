@@ -11,4 +11,5 @@ import './js/btn-up';
 import './js/fetchFilms';
 import './js/searchFilm';
 
-import './js/firebase';
+import './js/firebase/firebase';
+import './js/firebase/database';

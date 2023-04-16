@@ -1,14 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyBHYtTnrQrvyik3eNneaeIJ2Pjaq6Xv0JI',
-  authDomain: 'filmotekagroupalfa.firebaseapp.com',
-  projectId: 'filmotekagroupalfa',
-  storageBucket: 'filmotekagroupalfa.appspot.com',
-  messagingSenderId: '666551272315',
-  appId: '1:666551272315:web:a35dfbac81eb75d942b3de',
-};
+import { firebaseConfig } from './firebaseConfig';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -51,5 +43,5 @@ function renderGoogleUser(data){
         `
 }
 
-// https://filmotekagroupalfa-default-rtdb.firebaseio.com
+
 
