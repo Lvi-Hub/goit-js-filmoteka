@@ -16,25 +16,28 @@ const btnUp = {
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      
+      console.log(scrollY);
       // Если страница прокручена больше чем на 400px и кнопка еще не видима
       if (scrollY > 400 && !isVisible) {
         isVisible = true;
+        btnUp.show();
         this.addAnimation(); // вызываем функцию addAnimation для проигрывания анимации
-      } else if (scrollY <= 400 && isVisible) { // Если страница прокручена меньше или равно 400px и кнопка видима
+      } else if (scrollY <= 400 && isVisible) {
+        // Если страница прокручена меньше или равно 400px и кнопка видима
         isVisible = false;
+        btnUp.hide();
         this.el.style.opacity = 0; // устанавливаем опасити в 0, чтобы скрыть кнопку
       }
     });
-    
+
     document.querySelector('.btn-up').onclick = () => {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
-    }
-  }
-}
+    };
+  },
+};
 
 btnUp.addEventListener();
