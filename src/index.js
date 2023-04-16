@@ -5,4 +5,10 @@ import './js/example';
 
 import './js/homepage_main';
 import './js/modal-about';
+
 import './js/btn-up';
+
+import './js/fetchFilms';
+import './js/searchFilm';
+
+

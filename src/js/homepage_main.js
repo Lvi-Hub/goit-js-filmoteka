@@ -1,6 +1,10 @@
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
-const moviesGenres = [
+import { addEventlListenertoFilmCard } from "./modal-about";
+
+
+
+export const moviesGenres = [
   { id: 28, name: "Action" },
   { id: 12, name: "Adventure" },
   { id: 16, name: "Animation" },
@@ -53,7 +57,8 @@ async function getPopularMovies() {
       console.log(movieData);
 
       filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
-
+     addEventlListenertoFilmCard();
+     
    } catch (error) {
      console.log(error);
    }
@@ -61,11 +66,11 @@ async function getPopularMovies() {
 
 getPopularMovies()
 
-function getGenreName(genreId) {
+export function getGenreName(genreId) {
   return moviesGenres.find(({ id }) => id === genreId).name;
 }
 
-function checkArrlength(arr) {
+export function checkArrlength(arr) {
     let changedGenres = arr;
     if(arr.length > 2){
         changedGenres = arr.splice(0,2);
@@ -77,10 +82,10 @@ function checkArrlength(arr) {
 }
 
 function makeMarkupPopularMov(movieData) {
-    return movieData.map(({release_date, title, genre_ids, poster_path}) => {
+    return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
       const genresArr = genre_ids.map((id) => getGenreName(id));
       const genreResult = checkArrlength(genresArr).join(', ');
-      return `<li class="movie-item">
+      return `<li class="movie-item"  movie-id="${id}">
     <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}" 
     alt="movie poster" loading="lazy" class="movie-item__img" />
     <h2 class="movie-item__title">${title}</h2>
@@ -89,4 +94,5 @@ function makeMarkupPopularMov(movieData) {
       <span class="movie-item__year">${release_date.slice(0, 4)}</span>
     </p>
   </li>`}).join('');
-    }
+}
+    

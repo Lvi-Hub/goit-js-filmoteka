@@ -1,4 +1,4 @@
-const card = document.querySelector('.movie-card');
+const card = document.querySelector('.backdrop');
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
 
@@ -11,18 +11,22 @@ function fetchFilms(id) {
   });
 }
 
-
-const filmCardElements = document.querySelectorAll('[data-film]');
+export function addEventlListenertoFilmCard() {
+ const filmCardElements = document.querySelectorAll('[movie-id]');
+console.log(filmCardElements)
 filmCardElements.forEach(element => {
   element.addEventListener('click', event => {
     card.classList.remove('hidden')
-      const idFilm = event.currentTarget.getAttribute('data-film');
+    const idFilm = event.currentTarget.getAttribute('movie-id');
     fetchFilms(idFilm).then((data) => {
       fillModal(data);
      })
      
   });
-});
+}); 
+}
+
+
 
 const title = document.querySelector('.movie-card__info__title');
 const text = document.querySelector('.movie-card__info__small-text');
