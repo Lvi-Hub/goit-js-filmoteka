@@ -3,6 +3,8 @@ import debounce from 'lodash.debounce';
 
 import { getGenreName, checkArrlength } from './homepage_main';
 
+import { showSpinner } from './show_spinner';
+
 const searchFormEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.film-list');
 
@@ -17,6 +19,7 @@ function onSearchFormSubmit(event) {
 
         if (searchValue === '') {
                 listEl.innerHTML = '';
+                showSpinner();
                 emptySearchQuery();
                 emptySearchImg();
                 return console.log('ПУСТО!')
@@ -24,6 +27,7 @@ function onSearchFormSubmit(event) {
 
                 async function getFilms() {
                         try {
+                                showSpinner();
                                 resetPage();
                                 const searchFilms = await fetchFilms(searchValue);
                                 console.log(searchFilms);
@@ -94,7 +98,7 @@ function emptySearchQuery() {
 function invalidSearchImage() { 
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification); 
-        const invalidImg = `<li><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
+        const invalidImg = `<li class='bottom-img-wrap'><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
         listEl.insertAdjacentHTML('beforeend', invalidImg);
         return
 }
@@ -102,7 +106,7 @@ function invalidSearchImage() {
 function emptySearchImg() {
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification);
-        const emptyImg = `<li><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
+        const emptyImg = `<li class='bottom-img-wrap'><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
         listEl.insertAdjacentHTML('beforeend', emptyImg);
         return
 }
