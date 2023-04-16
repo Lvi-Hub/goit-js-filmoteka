@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
 import { addEventlListenertoFilmCard } from "./modal-about";
+import { showSpinner } from './show_spinner';
 
 
 
@@ -50,6 +51,7 @@ async function fetchApi() {
    }
 
 async function getPopularMovies() {
+   showSpinner()
    try {
       const movies = await fetchApi();
     
