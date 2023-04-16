@@ -1,0 +1,21 @@
+.navigation__button.signOut {
+  display: none;
+}
+
+.navigation__button.signIn {
+  display: block;
+}
+
+#googleUser {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 105px;
+}
+
+.user-img {
+    border-radius: 50%;
+    
+}
