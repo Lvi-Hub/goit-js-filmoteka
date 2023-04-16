@@ -1,12 +1,10 @@
-
 .scroll-item {
   background-color: var(--main-white-color);
   color: var(--secondary-active-color);
-
 }
 .btn-up {
-  @media screen and (max-width: 768px) 
-  { 
+  z-index: 11;
+  @media screen and (max-width: 768px) {
     font-size: 30px;
     right: 30px;
     bottom: 30px;
@@ -19,7 +17,7 @@
   color: #fff;
   background-color: #db2222;
   right: 40px;
-  bottom: 40px;
+  bottom: 5px;
   border-radius: 22px;
   width: 60px;
   height: 60px;

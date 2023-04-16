@@ -1,4 +1,8 @@
 .footer {
+  z-index: 10;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
   width: 100%;
   background: var(--color-footer-bg);
 }
