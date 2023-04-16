@@ -1,21 +1,36 @@
+
 .scroll-item {
-  fill: var(--color-red-accent);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--main-white-color);
+  color: var(--secondary-active-color);
+
 }
 .btn-up {
+  @media screen and (max-width: 768px) 
+  { 
+    font-size: 30px;
+    right: 30px;
+    bottom: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
   position: fixed;
-  background-color: #f4f5f4;
-  background-color: rgba(244, 245, 244, 0.8);
-  right: 20px;
-  bottom: 20px;
+  font-size: 50px;
+  color: #fff;
+  background-color: #db2222;
+  right: 40px;
+  bottom: 40px;
   border-radius: 22px;
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   border: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-
+.btn-up:hover {
+  background-color: var(--main-white-color);
+  color: var(--color-red-accent);
+}
 .btn-up::before {
   content: '';
   text-align: center;
