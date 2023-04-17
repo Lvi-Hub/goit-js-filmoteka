@@ -1,8 +1,10 @@
 .footer {
+
   z-index: 10;
   position: fixed;
   left: 0px;
   bottom: 0px;
+
   width: 100%;
   background: var(--color-footer-bg);
 }
@@ -24,11 +26,19 @@
 
 .students-span {
   text-decoration: underline;
+
+.students-span,
+.students-link {
+
   margin-left: 10px;
   line-height: calc(16 / 14);
   align-items: center;
   color: var(--color-grey-about);
 }
+.students-link {
+  text-decoration: underline;
+}
+
 .span-text {
   @media screen and (max-width: 768px) {
     display: inline-block;

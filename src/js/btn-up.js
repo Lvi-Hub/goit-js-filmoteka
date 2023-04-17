@@ -16,6 +16,7 @@ const btnUp = {
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
+
       // Если страница прокручена больше чем на 400px и кнопка еще не видима
       if (scrollY > 400 && !isVisible) {
         isVisible = true;
