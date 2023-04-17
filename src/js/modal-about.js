@@ -1,3 +1,4 @@
+
 import { hideModalOnEscape, hideModal } from './closeModal';
 
 const card = document.querySelector('.backdrop');
