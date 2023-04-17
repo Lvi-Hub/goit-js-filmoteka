@@ -59,8 +59,11 @@ function fillModal(data) {
   //  window.addEventListener("click", hideModalOnCLick), 100)
   // console.log(data);
 };
- 
-// const closeModal = document.querySelector(".movie-card__close-btn");
-// closeModal.addEventListener('click', () => {
-//    card.classList.add("hidden")
-//  })
+
+
+const closeModal = document.querySelector(".movie-card__close-btn");
+closeModal.addEventListener('click', () => {
+  card.classList.add("hidden") 
+ })
+
+
