@@ -202,14 +202,15 @@
 
 .btn-watched {
   margin: 0;
-  background-color: var(--color-red-accent);
-  color: var(--white-general);
+  // background-color: var(--color-red-accent);
+  // color: var(--white-general);
 
   @include desktop {
     margin-right: 8px;
   }
 }
 
+.btn-watched,
 .btn-queue {
   margin: 0;
 
@@ -217,6 +218,7 @@
 
   color: var(--color-red-accent);
 }
+
 .btn-red,
 .btn-black {
   color: var(--black-main);
@@ -375,6 +377,8 @@
   background-color: var(--black-main);
   color: var(--white-general);
 }
+
+.btn-watched:hover,
 .btn-queue:hover {
   background-color: var(--color-red-accent);
   color: var(--white-general);
@@ -409,8 +413,4 @@ img {
 .btn-red:hover {
   background-color: var(--black-main);
   color: var(--white-general);
-}
-
-.btn-watched:hover {
-  background-color: var(--color-hover-btn-library);
 }
