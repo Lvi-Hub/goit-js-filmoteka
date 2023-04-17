@@ -6,8 +6,8 @@
 // closeBtnEl.addEventListener("click", hideModal);
 
 const backdropEl = document.querySelector(".backdrop");
-const closeBtnEl = document.querySelector(".close-button");
-const modalEl = document.querySelector(".modal");
+const closeBtnEl = document.querySelector(".movie-card__close-btn");
+const modalEl = document.querySelector(".movie-card");
 
 //Hides modal if Escape button is pressed
 export function hideModalOnEscape(e) {
@@ -32,7 +32,7 @@ function hideBackdrop() {
 }
 
 //Removes all event listeners
-function removeEventListeners() {
+ function removeEventListeners() {
     window.removeEventListener("mousedown", hideModalOnEscape);
     window.removeEventListener("click", hideModalOnCLick);
     closeBtnEl.removeEventListener("click", hideModalOnCLick);

@@ -45,7 +45,8 @@ function fillModal(data) {
   poster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + data.poster_path)
 };
  
+
 const closeModal = document.querySelector(".movie-card__close-btn");
 closeModal.addEventListener('click', () => {
-   card.classList.add("hidden")
+  card.classList.add("hidden") 
  })
