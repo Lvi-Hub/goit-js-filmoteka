@@ -16,7 +16,9 @@ login.addEventListener('click', signinUser);
 logout.addEventListener('click', signoutUser);
 
 
-function signinUser() { 
+function signinUser(e) { 
+  e.preventDefault();
+  console.log(auth.currentUser);
   signInWithPopup(auth, provider)
       .then(data => {
           login.classList.add('signOut');
@@ -27,7 +29,8 @@ function signinUser() {
     .catch(error => {console.log(error)});
 }
 
-function signoutUser(){
+function signoutUser(e) {
+    e.preventDefault();
      signOut(auth).then(() => {
       login.classList.remove('signOut');
       logout.classList.remove('signIn');
