@@ -72,7 +72,7 @@ function onSearchFormSubmit(event) {
                         
                         } catch {
                                 listEl.innerHTML = '';
-                                paginationContainer.classList.add('is-hidden');
+                                // paginationContainer.classList.add('is-hidden');
                                 return console.log('CATCH!')
                         }
               
