@@ -414,3 +414,126 @@ img {
   background-color: var(--black-main);
   color: var(--white-general);
 }
+
+//////// theme///
+
+.toggle {
+  position: absolute;
+  top: 35px;
+  right: 32px;
+
+  @include tablet {
+    right: 15px;
+    top: 180px;
+  }
+
+  @include desktop {
+    right: 30px;
+    top: 250px;
+  }
+}
+
+.toggle label {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 22px;
+  background-color: var(--white-general);
+  border: 1px solid var(--black-main);
+  border-radius: 100px;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+    opacity: 1;
+    transform: translate3d(-47%, 0, 0) scale(0.1);
+    transition: background-color 300ms ease-in-out 200ms,
+      opacity 350ms ease-in-out 200ms, transform 400ms ease-in-out;
+    pointer-events: none;
+    content: '';
+    opacity: 0;
+    z-index: -999;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+    margin: auto;
+    width: 14px;
+    height: 14px;
+    background-color: var(--white-general);
+    border: 1px solid var(--black-main);
+    content: '';
+    border-radius: 100px;
+    transition: background-color 200ms linear, transform 200ms ease-in-out 100ms;
+  }
+}
+
+.toggle input {
+  display: none;
+
+  &:checked {
+    ~ label:after {
+      background-color: var(--black-main);
+      transform: translate3d(27px, 0, 0);
+    }
+
+    ~ label:before {
+      transform: translate3d(-84%, 23%, 0) scale(1);
+      transition: background-color 300ms ease-in-out, opacity 30ms ease-in-out,
+        transform 400ms ease-in-out;
+      opacity: 1;
+    }
+  }
+}
+
+.dark-theme {
+  background-color: var(--black-main);
+  color: var(--white-general);
+}
+
+.dark-theme footer {
+  background-color: var(--black-main);
+  color: var(--white-general);
+}
+
+.dark-theme .footer-text {
+  color: var(--white-general);
+}
+
+.dark-theme .students-span,
+.dark-theme .students-link {
+  color: var(--white-general);
+}
+
+.dark-theme .film-list {
+  background-color: var(--black-main);
+  color: var(--white-general);
+}
+
+.dark-theme .movie-card__info__title {
+  color: var(--black-main);
+}
+
+.dark-theme .movie-card__info__details-text {
+  color: var(--black-main);
+}
+
+.dark-theme .movie-card__info__small-title {
+  color: var(--black-main);
+}
+
+.dark-theme .movie-card__info__small-text {
+  color: var(--black-main);
+}
