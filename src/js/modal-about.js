@@ -1,11 +1,11 @@
-import { hideModalOnEscape, hideModalOnCLick, hideModal } from './closeModal';
+
+import { hideModalOnEscape, hideModal } from './closeModal';
 
 const card = document.querySelector('.backdrop');
 const body = document.querySelector('body');
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
 
-// const backdropEl = document.querySelector(".backdrop");
 const closeBtnEl = document.querySelector('.movie-card__close-btn');
 const modalEl = document.querySelector('.movie-card');
 const title = document.querySelector('.movie-card__info__title');
@@ -26,9 +26,7 @@ function fetchFilms(id) {
 
 export function addEventlListenertoFilmCard() {
   const filmCardElements = document.querySelectorAll('[movie-id]');
-  // console.log(filmCardElements)
   filmCardElements.forEach(element => {
-    // console.log(`element ${element}`);
     element.addEventListener('click', event => {
       closeBtnEl.addEventListener('click', hideModal);
       card.classList.remove('hidden');
@@ -41,7 +39,7 @@ export function addEventlListenertoFilmCard() {
     });
   });
   window.addEventListener('keydown', hideModalOnEscape);
-  window.addEventListener('click', hideModalOnCLick);
+  window.addEventListener('click', hideModalOnBackdropClick);
 }
 
 function fillModal({
@@ -73,12 +71,10 @@ function fillModal({
 
   const addToWatched = document.querySelector('.movie-card__button-watched');
   addToWatched.addEventListener('click', () => console.log(filmDetails));
-  //  setTimeout(
-  //  window.addEventListener("click", hideModalOnCLick), 100)
-  // console.log(data);
 }
 
-// const closeModal = document.querySelector(".movie-card__close-btn");
-// closeModal.addEventListener('click', () => {
-//    card.classList.add("hidden")
-//  })
+function hideModalOnBackdropClick(e) {
+  e.target === card && hideModal();
+  console.log(e.target);
+  e.stopPropagation();
+}

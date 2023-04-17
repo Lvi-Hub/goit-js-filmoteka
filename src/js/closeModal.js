@@ -18,10 +18,10 @@ export function hideModalOnEscape(e) {
 
 //Hides modal if clicked outside of the modal
 export function hideModalOnCLick(e) {
-    e.currentTarget !== modalEl && hideModal();
-    console.log(e.currentTarget)
+    e.target === card && hideModal();
+    console.log(e.target)
     e.stopPropagation();
-}
+  }
 
 //HidesModal
 export function hideModal() {
