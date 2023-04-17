@@ -12,6 +12,4 @@ import './js/fetchFilms';
 import './js/searchFilm';
 
 import './js/modal-team';
-
 import './js/trailer';
-

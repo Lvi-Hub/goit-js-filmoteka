@@ -1,23 +1,20 @@
-const modalOpenEl = document.querySelector('.students-span');
+const modalOpenEl = document.querySelector('.btnTeam');
 const backdropFooterEl = document.querySelector('.backdrop-footer');
-const bodyEl = document.querySelector('body')
-const closeBtnEl = document.querySelector('.modal__button')
+const bodyEl = document.querySelector('body');
+const closeBtnEl = document.querySelector('.modal__button');
 
-
-modalOpenEl.addEventListener("click", openFooterModal);
+modalOpenEl.addEventListener('click', openFooterModal);
 document.addEventListener('keydown', footerModalEsc);
 backdropFooterEl.addEventListener('click', footerModalEsc);
 backdropFooterEl.addEventListener('click', modalFooterCloseOnClick);
-
-
-
-
+console.log(modalOpenEl);
+console.log('111');
 function openFooterModal() {
-    backdropFooterEl.classList.remove('is-hidden');
-    document.querySelector('body').classList.add('noScroll');
-    return
+  console.log('222');
+  backdropFooterEl.classList.remove('is-hidden');
+  document.querySelector('body').classList.add('noScroll');
+  return;
 }
-
 
 function modalFooterCloseOnClick() {
   backdropFooterEl.classList.add('is-hidden');
@@ -30,7 +27,6 @@ function footerModalEsc(event) {
     removeListener();
   }
 }
-
 
 function removeListener() {
   document.removeEventListener('keydown', footerModalEsc);
