@@ -204,6 +204,7 @@ async function getPopularMovies() {
       showSpinner();
       const movies = await fetchApi(pageNumber);
       const movieData = movies.results;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
       addEventlListenertoFilmCard();
     });

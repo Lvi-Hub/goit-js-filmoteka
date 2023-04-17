@@ -53,6 +53,7 @@ function onSearchFormSubmit(event) {
                                         pagination.on('beforeMove', async (event) => {
                                                 pageNumber = event.page;
                                                 const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
                                           listEl.innerHTML = createFilmsMarkup(searchFilms);
                                         });
 
