@@ -32,6 +32,13 @@ function onSearchFormSubmit(event) {
                         try {
                                 // resetPage();
                                 const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                const pagination = new Pagination(paginationContainer, {
+                                          totalItems: searchFilms.data.total_results,
+                                          itemsPerPage: 20,
+                                          visiblePages: 5,
+                                        //   pageLinks: 2,
+                                          centerAlign: true,
+                                        });
                                 console.log(searchFilms);
                                 console.log('ВСЕ ОК!')
                         
@@ -39,16 +46,11 @@ function onSearchFormSubmit(event) {
                                         listEl.innerHTML = '';
                                         invalidSearchQuery()
                                         invalidSearchImage()
+                                        paginationContainer.classList.add('is-hidden');
                                         return console.log('ПУСТО! Нічого не знайдено!')
                                 
                                 } else {
-                                        const pagination = new Pagination(paginationContainer, {
-                                          totalItems: searchFilms.data.total_results,
-                                          itemsPerPage: 20,
-                                          visiblePages: 5,
-                                        //   pageLinks: 2,
-                                          centerAlign: true,
-                                        });
+                                        
 
                                         pagination.on('beforeMove', async (event) => {
                                                 pageNumber = event.page;
@@ -62,6 +64,7 @@ function onSearchFormSubmit(event) {
                         
                         } catch {
                                 listEl.innerHTML = '';
+                                paginationContainer.classList.add('is-hidden');
                                 return console.log('CATCH!')
                         }
               
