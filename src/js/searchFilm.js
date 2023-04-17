@@ -4,29 +4,48 @@ import debounce from 'lodash.debounce';
 import { getGenreName, checkArrlength } from './homepage_main';
 import { addEventlListenertoFilmCard } from './modal-about';
 
+import Pagination from 'tui-pagination';
+import { paginationContainer } from "./pagination";
+
+import { showSpinner } from './show_spinner';
+
 const searchFormEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.film-list');
+
+let pageNumber = 1;
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(event) {
         event.preventDefault();
-
+        // const pagination = new Pagination(paginationContainer);
+        // pagination.reset();
         const searchValue = event.currentTarget.elements.searchQuery.value;
         console.log(searchValue);
         
 
         if (searchValue === '') {
                 listEl.innerHTML = '';
+                showSpinner();
                 emptySearchQuery();
                 emptySearchImg();
+                paginationContainer.classList.add('is-hidden');
                 return console.log('ПУСТО!')
         } else {
 
                 async function getFilms() {
                         try {
-                                resetPage();
-                                const searchFilms = await fetchFilms(searchValue);
+
+                                // resetPage();
+                                const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                const pagination = new Pagination(paginationContainer, {
+                                          totalItems: searchFilms.data.total_results,
+                                          itemsPerPage: 20,
+                                          visiblePages: 5,
+                                        //   pageLinks: 2,
+                                          centerAlign: true,
+                                        });
+
                                 console.log(searchFilms);
                                 console.log('ВСЕ ОК!')
                         
@@ -34,15 +53,26 @@ function onSearchFormSubmit(event) {
                                         listEl.innerHTML = '';
                                         invalidSearchQuery()
                                         invalidSearchImage()
+                                        paginationContainer.classList.add('is-hidden');
                                         return console.log('ПУСТО! Нічого не знайдено!')
                                 
                                 } else {
+                                        
+
+                                        pagination.on('beforeMove', async (event) => {
+                                                pageNumber = event.page;
+                                                const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                          listEl.innerHTML = createFilmsMarkup(searchFilms);
+                                        });
+
                                         listEl.innerHTML = createFilmsMarkup(searchFilms);
                                         addEventlListenertoFilmCard()
                                 }
                         
                         } catch {
                                 listEl.innerHTML = '';
+                                paginationContainer.classList.add('is-hidden');
                                 return console.log('CATCH!')
                         }
               
@@ -96,7 +126,7 @@ function emptySearchQuery() {
 function invalidSearchImage() { 
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification); 
-        const invalidImg = `<li><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
+        const invalidImg = `<li class='bottom-img-wrap'><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
         listEl.insertAdjacentHTML('beforeend', invalidImg);
         return
 }
@@ -104,7 +134,7 @@ function invalidSearchImage() {
 function emptySearchImg() {
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification);
-        const emptyImg = `<li><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
+        const emptyImg = `<li class='bottom-img-wrap'><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
         listEl.insertAdjacentHTML('beforeend', emptyImg);
         return
 }
