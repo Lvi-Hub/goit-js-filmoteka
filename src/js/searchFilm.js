@@ -37,8 +37,9 @@ function onSearchFormSubmit(event) {
                         try {
 
                                 // resetPage();
+                                paginationContainer.classList.remove('is-hidden');
                                 const searchFilms = await fetchFilms(searchValue, pageNumber);
-                                const pagination = new Pagination(paginationContainer, {
+                                const pagination = await new Pagination(paginationContainer, {
                                           totalItems: searchFilms.data.total_results,
                                           itemsPerPage: 20,
                                           visiblePages: 5,
@@ -60,6 +61,7 @@ function onSearchFormSubmit(event) {
                                         
 
                                         pagination.on('beforeMove', async (event) => {
+                                                paginationContainer.classList.remove('is-hidden');
                                                 pageNumber = event.page;
                                                 const searchFilms = await fetchFilms(searchValue, pageNumber);
                                                 window.scrollTo({ top: 0, behavior: 'smooth' });
