@@ -2,6 +2,10 @@
  display: none;
 }
 
+.scroll{
+  overflow: hidden;
+}
+
 
 :root {
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,8 +46,10 @@ z-index: 10;
 
 .movie-card {
   position: absolute;
-
+  height: 550px;
+overflow-y: scroll;
   left: 50%;
+  top: 10%;
   padding: 48px 20px;
   transform: translate(-50%, 0);
 
@@ -198,9 +204,9 @@ z-index: 10;
 }
 
 .movie-card__button-watched {
-  background: #b92f2c;
-  color: #fff;
-  border: 1px solid transparent;
+  background: #fff;
+    color: #b92f2c;
+    border: 1px solid #000000;
 
   transition: background 250ms var(--cubic), color 250ms var(--cubic),
     border 250ms var(--cubic);

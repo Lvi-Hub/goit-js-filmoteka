@@ -1,7 +1,7 @@
 const card = document.querySelector('.backdrop');
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
-
+const body = document.querySelector("body");
 function fetchFilms(id) {
   return fetch(`${BASE_URL}movie/${id}?api_key=${API_KEY}`).then(response => {
     if (!response.ok) {
@@ -16,7 +16,8 @@ export function addEventlListenertoFilmCard() {
 console.log(filmCardElements)
 filmCardElements.forEach(element => {
   element.addEventListener('click', event => {
-    card.classList.remove('hidden')
+    card.classList.remove('hidden');
+    body.classList.add('scroll');
     const idFilm = event.currentTarget.getAttribute('movie-id');
     fetchFilms(idFilm).then((data) => {
       fillModal(data);
@@ -49,4 +50,6 @@ function fillModal(data) {
 const closeModal = document.querySelector(".movie-card__close-btn");
 closeModal.addEventListener('click', () => {
   card.classList.add("hidden") 
- })
+   body.classList.remove('scroll')
+})
+ 
