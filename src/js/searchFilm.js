@@ -2,6 +2,7 @@ import { fetchFilms, pageStart, page, resetPage } from './fetchFilms';
 import debounce from 'lodash.debounce';
 
 import { getGenreName, checkArrlength } from './homepage_main';
+import { addEventlListenertoFilmCard } from './modal-about';
 
 const searchFormEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.film-list');
@@ -18,6 +19,7 @@ function onSearchFormSubmit(event) {
         if (searchValue === '') {
                 listEl.innerHTML = '';
                 emptySearchQuery();
+                emptySearchImg();
                 return console.log('ПУСТО!')
         } else {
 
@@ -31,10 +33,12 @@ function onSearchFormSubmit(event) {
                                 if (searchFilms.data.results.length === 0) {
                                         listEl.innerHTML = '';
                                         invalidSearchQuery()
+                                        invalidSearchImage()
                                         return console.log('ПУСТО! Нічого не знайдено!')
                                 
                                 } else {
                                         listEl.innerHTML = createFilmsMarkup(searchFilms);
+                                        addEventlListenertoFilmCard()
                                 }
                         
                         } catch {
@@ -56,9 +60,9 @@ function createFilmsMarkup(searchFilms) {
         if (poster_path) {     
             posterPath =  `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`;
         } else {
-            posterPath = `https://cdn11.bigcommerce.com/s-1812kprzl2/images/stencil/original/products/426/5082/no-image__12882.1665668288.jpg?c=2`;
+            posterPath = `https://st4.depositphotos.com/21486874/31104/i/600/depositphotos_311048494-stock-photo-coming-soon-neon-light-announcement.jpg`;
         }    
-        return `<li class="movie-item" id = "${id}">
+        return `<li class="movie-item" movie-id = "${id}">
   <img src="${posterPath}" alt="movie poster" loading="lazy" class="movie-item__img"/>
   <h2 class="movie-item__title">${title}</h2>
   <p class="movie-item__text">
@@ -72,7 +76,7 @@ function createFilmsMarkup(searchFilms) {
 
 
 function invalidSearchQuery() {
-        const invalidNotification = `<p class="search-notification"> Search result not successful. Enter the correct movie name. </p>;`; 
+        const invalidNotification = `<p class="search-notification"> Search result not successful. Enter the correct movie name. </p>`; 
         searchFormEl.insertAdjacentHTML('beforeend', invalidNotification);
         const removeInvalidNotification = debounce(() => {searchFormEl.lastElementChild.remove();
   }, 2500);
@@ -86,3 +90,23 @@ function emptySearchQuery() {
         }, 2500);
         return removeEmptySearchNotification();
 }
+
+
+
+function invalidSearchImage() { 
+        const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
+        listEl.insertAdjacentHTML('beforeend', emptyNotification); 
+        const invalidImg = `<li><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
+        listEl.insertAdjacentHTML('beforeend', invalidImg);
+        return
+}
+
+function emptySearchImg() {
+        const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
+        listEl.insertAdjacentHTML('beforeend', emptyNotification);
+        const emptyImg = `<li><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
+        listEl.insertAdjacentHTML('beforeend', emptyImg);
+        return
+}
+
+

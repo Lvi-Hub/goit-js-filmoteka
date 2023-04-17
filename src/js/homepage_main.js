@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
 import { addEventlListenertoFilmCard } from "./modal-about";
+import { showSpinner } from './show_spinner';
 
 
 
@@ -43,13 +44,14 @@ export const moviesGenres = [
 ];
 const filmsListEl = document.querySelector('.film-list');
 
-async function fetchApi() {
+export async function fetchApi() {
    const POPULAR_MOVIES = 'language=en-US&sort_by=popularity.desc&include_adult=false';
   
    return await axios.get(`${BASE_URL}discover/movie?api_key=${API_KEY}&${POPULAR_MOVIES}`)
    }
 
-async function getPopularMovies() {
+export async function getPopularMovies() {
+   showSpinner()
    try {
       const movies = await fetchApi();
     
@@ -81,7 +83,7 @@ export function checkArrlength(arr) {
   return changedGenres;
 }
 
-function makeMarkupPopularMov(movieData) {
+export function makeMarkupPopularMov(movieData) {
     return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
       const genresArr = genre_ids.map((id) => getGenreName(id));
       const genreResult = checkArrlength(genresArr).join(', ');
