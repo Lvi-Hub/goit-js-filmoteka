@@ -11,4 +11,6 @@ import './js/btn-up';
 import './js/fetchFilms';
 import './js/searchFilm';
 
+import './js/modal-team';
+
 
