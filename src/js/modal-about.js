@@ -65,11 +65,13 @@ function fillModal({id,title, overview, popularity, genres, poster_path,release_
   //  window.addEventListener("click", hideModalOnCLick), 100)
   // console.log(data);
 };
+
  
 // const closeModal = document.querySelector(".movie-card__close-btn");
 // closeModal.addEventListener('click', () => {
 //    card.classList.add("hidden")
 //  })
+
 
 
 
