@@ -46,16 +46,22 @@ window.addEventListener("click", hideModalOnCLick)
 
 }
 
+function fillModal({id,title, overview, popularity, genres, poster_path,release_date}) {
+  title.innerHTML = title;
+  text.innerHTML = overview;
+  popularity.innerHTML = popularity;
+  originalTitle.innerHTML = title;
+  genreNames = genres.map(genre => genre.name).join(", ");
+   genres.innerHTML = genreNames;
+  poster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path)
 
-function fillModal(data) {
-  
-  poster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + data.poster_path);
-  title.innerHTML = data.title;
-  text.innerHTML = data.overview;
-  popularity.innerHTML = data.popularity;
-  originalTitle.innerHTML = data.title;
-   genres.innerHTML = data.genres.map(genre => genre.name).join(", ");
-  //  setTimeout(
+  const filmDetails = {
+    id,title,overview,popularity,genreNames,poster_path,release_date
+  }
+
+  const addToWatched = document.querySelector('.movie-card__button-watched');
+  addToWatched.addEventListener('click',() => console.log(filmDetails));
+    //  setTimeout(
   //  window.addEventListener("click", hideModalOnCLick), 100)
   // console.log(data);
 };
@@ -64,3 +70,6 @@ function fillModal(data) {
 // closeModal.addEventListener('click', () => {
 //    card.classList.add("hidden")
 //  })
+
+
+
