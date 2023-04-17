@@ -29,6 +29,7 @@ function onSearchFormSubmit(event) {
                 showSpinner();
                 emptySearchQuery();
                 emptySearchImg();
+                paginationContainer.classList.add('is-hidden');
                 return console.log('ПУСТО!')
         } else {
 
