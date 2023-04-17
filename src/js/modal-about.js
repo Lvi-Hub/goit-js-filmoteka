@@ -1,4 +1,4 @@
-import { hideModalOnEscape, hideModalOnCLick, hideModal} from './closeModal';
+import { hideModalOnEscape, hideModal} from './closeModal';
 
 const card = document.querySelector('.backdrop');
 const body = document.querySelector('body');
@@ -42,8 +42,7 @@ filmCardElements.forEach(element => {
   });
 }); 
 window.addEventListener("keydown", hideModalOnEscape);
-window.addEventListener("click", hideModalOnCLick)
-
+window.addEventListener("click", hideModalOnBackdropClick);
 }
 
 function fillModal({id,title, overview, popularity, genres, poster_path,release_date}) {
@@ -66,6 +65,11 @@ function fillModal({id,title, overview, popularity, genres, poster_path,release_
   // console.log(data);
 };
 
+function hideModalOnBackdropClick(e) {
+  e.target === card && hideModal();
+  console.log(e.target)
+  e.stopPropagation();
+}
  
 // const closeModal = document.querySelector(".movie-card__close-btn");
 // closeModal.addEventListener('click', () => {
