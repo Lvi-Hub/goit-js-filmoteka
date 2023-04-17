@@ -5,9 +5,10 @@
 // window.addEventListener("click", hideModalOnCLick);
 // closeBtnEl.addEventListener("click", hideModal);
 
-const backdropEl = document.querySelector(".backdrop");
-const closeBtnEl = document.querySelector(".close-button");
-const modalEl = document.querySelector(".modal");
+const card = document.querySelector(".backdrop");
+const closeBtnEl = document.querySelector(".movie-card__close-btn");
+const modalEl = document.querySelector(".movie-card");
+const body = document.querySelector('body');
 
 //Hides modal if Escape button is pressed
 export function hideModalOnEscape(e) {
@@ -16,19 +17,21 @@ export function hideModalOnEscape(e) {
 
 //Hides modal if clicked outside of the modal
 export function hideModalOnCLick(e) {
-    e.target !== modalEl && hideModal();
+    e.currentTarget !== modalEl && hideModal();
+    console.log(e.currentTarget)
     e.stopPropagation();
 }
 
 //HidesModal
-function hideModal() {
+export function hideModal() {
     hideBackdrop();
     removeEventListeners();
+    body.classList.remove('hide-scroll');
   }
 
 //Hides backdrop
 function hideBackdrop() {
-    backdropEl.classList.add("hidden");
+    card.classList.add("hidden");
 }
 
 //Removes all event listeners
