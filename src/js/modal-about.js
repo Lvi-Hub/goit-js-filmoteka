@@ -26,9 +26,7 @@ function fetchFilms(id) {
 
 export function addEventlListenertoFilmCard() {
  const filmCardElements = document.querySelectorAll('[movie-id]');
-// console.log(filmCardElements)
 filmCardElements.forEach(element => {
-  // console.log(`element ${element}`);
   element.addEventListener('click', event => {
     closeBtnEl.addEventListener("click", hideModal);
     card.classList.remove('hidden')
