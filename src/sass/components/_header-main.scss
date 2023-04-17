@@ -175,7 +175,7 @@
 .btn-logOut,
 .btn-login {
   display: inline-block;
-  padding: 8px 3px;
+  padding: 10px 22px;
 
   @include tablet {
     padding: 12px 20px;
@@ -236,6 +236,14 @@
   @include tablet {
     order: 0;
   }
+}
+
+.form-input:hover.form-input::placeholder {
+  color: var(--color-red-accent);
+}
+
+.form-input:hover ~ .icon-input {
+  stroke: var(--color-red-accent);
 }
 
 .form-input {
@@ -401,4 +409,8 @@ img {
 .btn-red:hover {
   background-color: var(--black-main);
   color: var(--white-general);
+}
+
+.btn-watched:hover {
+  background-color: var(--color-hover-btn-library);
 }
