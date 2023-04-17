@@ -21,6 +21,7 @@
 
 .movie-item {
    width: 100%;
+   height: 100%;
    scale: 1;
    transition: scale 350ms;
    border-radius: 5px;
@@ -30,14 +31,14 @@
    @include tablet {
       flex-basis: calc((100% - 32px) / 2);
       width: 336px;
-      height: 494px;
+      height: 520px;
    }
 
    @include desktop {
       flex-basis: calc((100% - 32px) / 3);
       margin-bottom: 16px;
       width: 395px;
-      height: 634px;
+      height: 694px;
    }
 }
 
@@ -75,7 +76,10 @@
 .movie-item__text {
    font-size: 12px;
    font-weight: 500;
-   line-height: 1.17;
+   line-height: auto;
+   padding-left: 10px;
+   padding-bottom: 5px;
+   vertical-align: middle;
 
    @include tablet {
       line-height: 1.33;

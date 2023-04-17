@@ -2,8 +2,10 @@ import axios from "axios";
 import { BASE_URL, API_KEY } from './constants';
 import { addEventlListenertoFilmCard } from "./modal-about";
 import { showSpinner } from './show_spinner';
+import Pagination from "tui-pagination";
+import { paginationContainer } from "./pagination";
 
-
+let pageNumber = 1;
 
 export const moviesGenres = [
   { id: 28, name: "Action" },
@@ -42,59 +44,93 @@ export const moviesGenres = [
   { id: 10768, name: "War & Politics" },
   { id: 37, name: "Western" },
 ];
+
 const filmsListEl = document.querySelector('.film-list');
 
-async function fetchApi() {
-   const POPULAR_MOVIES = 'language=en-US&sort_by=popularity.desc&include_adult=false';
-  
-   return await axios.get(`${BASE_URL}discover/movie?api_key=${API_KEY}&${POPULAR_MOVIES}`)
-   }
 
-async function getPopularMovies() {
-   showSpinner()
-   try {
-      const movies = await fetchApi();
-    
-      const movieData = movies.data.results;
-      console.log(movieData);
+export async function fetchApi(pageNumber) {
+  const POPULAR_MOVIES = 'language=en-US&sort_by=popularity.desc&include_adult=false';
 
-      filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
-     addEventlListenertoFilmCard();
-     
-   } catch (error) {
-     console.log(error);
-   }
+  const response = await axios.get(`${BASE_URL}discover/movie?api_key=${API_KEY}&${POPULAR_MOVIES}&page=${pageNumber}`);
+  return response.data;
 }
 
-getPopularMovies()
+export async function getPopularMovies() {
+  showSpinner();
+
+  try {
+    const movies = await fetchApi(pageNumber);
+
+    const movieData = movies.results;
+    console.log(movies.results);
+
+
+    const options = {
+      totalItems: movies.total_results,
+      page: pageNumber,
+      itemsPerPage: 20,
+      centerAlign: true,
+      
+      visiblePages: 5,
+    };
+
+    const pagination = new Pagination(paginationContainer, options);
+
+
+
+    pagination.on('beforeMove', async (eventData) => {
+      console.log(pagination);
+      pageNumber = eventData.page;
+      showSpinner();
+      const movies = await fetchApi(pageNumber);
+      const movieData = movies.results;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
+      addEventlListenertoFilmCard();
+    });
+
+    filmsListEl.innerHTML = makeMarkupPopularMov(movieData);
+    addEventlListenertoFilmCard();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getPopularMovies();
 
 export function getGenreName(genreId) {
   return moviesGenres.find(({ id }) => id === genreId).name;
 }
 
 export function checkArrlength(arr) {
-    let changedGenres = arr;
-    if(arr.length > 2){
-        changedGenres = arr.splice(0,2);
-        changedGenres.push('Other');
-        return changedGenres;
-    }
+  let changedGenres = arr;
+  if (arr.length > 2) {
+    changedGenres = arr.splice(0, 2);
+    changedGenres.push('Other');
+    return changedGenres;
+  }
 
   return changedGenres;
 }
 
-function makeMarkupPopularMov(movieData) {
+
+export function makeMarkupPopularMov(movieData) {
     return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
+
       const genresArr = genre_ids.map((id) => getGenreName(id));
       const genreResult = checkArrlength(genresArr).join(', ');
+      if (release_date === undefined) {
+          release_date = '';
+       }
       return `<li class="movie-item"  movie-id="${id}">
-    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}" 
-    alt="movie poster" loading="lazy" class="movie-item__img" />
-    <h2 class="movie-item__title">${title}</h2>
-    <p class="movie-item__text">
-      <span class="movie-item__genre">${genreResult}</span> |
-      <span class="movie-item__year">${release_date.slice(0, 4)}</span>
-    </p>
-  </li>`}).join('');
+        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}" 
+          alt="movie poster" loading="lazy" class="movie-item__img" />
+        <h2 class="movie-item__title">${title}</h2>
+        <p class="movie-item__text">
+          <span class="movie-item__genre">${genreResult}</span> |
+          <span class="movie-item__year">${release_date.slice(0, 4)}</span>
+        </p>
+      </li>`;
+    })
+    .join('');
 }
-    
