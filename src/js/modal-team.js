@@ -7,10 +7,8 @@ modalOpenEl.addEventListener('click', openFooterModal);
 document.addEventListener('keydown', footerModalEsc);
 backdropFooterEl.addEventListener('click', footerModalEsc);
 backdropFooterEl.addEventListener('click', modalFooterCloseOnClick);
-console.log(modalOpenEl);
-console.log('111');
+
 function openFooterModal() {
-  console.log('222');
   backdropFooterEl.classList.remove('is-hidden');
   document.querySelector('body').classList.add('noScroll');
   return;
