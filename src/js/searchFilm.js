@@ -4,14 +4,20 @@ import debounce from 'lodash.debounce';
 import { getGenreName, checkArrlength } from './homepage_main';
 import { addEventlListenertoFilmCard } from './modal-about';
 
+import Pagination from 'tui-pagination';
+import { paginationContainer } from "./pagination";
+
 const searchFormEl = document.querySelector('#search-form');
 const listEl = document.querySelector('.film-list');
+
+let pageNumber = 1;
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(event) {
         event.preventDefault();
-
+        // const pagination = new Pagination(paginationContainer);
+        // pagination.reset();
         const searchValue = event.currentTarget.elements.searchQuery.value;
         console.log(searchValue);
         
@@ -25,8 +31,15 @@ function onSearchFormSubmit(event) {
 
                 async function getFilms() {
                         try {
-                                resetPage();
-                                const searchFilms = await fetchFilms(searchValue);
+                                // resetPage();
+                                const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                const pagination = new Pagination(paginationContainer, {
+                                          totalItems: searchFilms.data.total_results,
+                                          itemsPerPage: 20,
+                                          visiblePages: 5,
+                                        //   pageLinks: 2,
+                                          centerAlign: true,
+                                        });
                                 console.log(searchFilms);
                                 console.log('ВСЕ ОК!')
                         
@@ -34,15 +47,26 @@ function onSearchFormSubmit(event) {
                                         listEl.innerHTML = '';
                                         invalidSearchQuery()
                                         invalidSearchImage()
+                                        paginationContainer.classList.add('is-hidden');
                                         return console.log('ПУСТО! Нічого не знайдено!')
                                 
                                 } else {
+                                        
+
+                                        pagination.on('beforeMove', async (event) => {
+                                                pageNumber = event.page;
+                                                const searchFilms = await fetchFilms(searchValue, pageNumber);
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                          listEl.innerHTML = createFilmsMarkup(searchFilms);
+                                        });
+
                                         listEl.innerHTML = createFilmsMarkup(searchFilms);
                                         addEventlListenertoFilmCard()
                                 }
                         
                         } catch {
                                 listEl.innerHTML = '';
+                                paginationContainer.classList.add('is-hidden');
                                 return console.log('CATCH!')
                         }
               
