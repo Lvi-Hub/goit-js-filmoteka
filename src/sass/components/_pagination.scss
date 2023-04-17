@@ -1,0 +1,111 @@
+.tui-pagination * {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tui-pagination {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  margin: 14px 0 60px;
+  line-height: normal;
+  text-align: center;
+  font-size: 0;
+}
+
+.tui-pagination .tui-page-btn {
+  // cursor: pointer;
+  display: flex;
+  position: relative;
+  padding: 16px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  background: #ffffffcb;
+  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: middle;
+  border: none;
+}
+
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  @media screen and (max-width: 425px) {
+    display: none;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 16px;
+}
+
+.tui-pagination .tui-page-btn:hover {
+  background-color: #f7f7f7;
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  background: #ff6b08;
+  border-color: #ff6b08;
+  cursor: default;
+}
+
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next {
+  height: 40px;
+  width: 40px;
+  background-color: #f7f7f7;
+}
+
+.tui-pagination .tui-ico-ellip::before {
+  content: '';
+  visibility: visible;
+}
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-next {
+  font-size: 0;
+}
+.tui-pagination .tui-first,
+.tui-pagination .tui-last,
+.tui-pagination .tui-is-disabled {
+  display: none;
+}
+
+.tui-pagination .tui-ico-prev::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/arrow-left.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  visibility: visible;
+}
+
+.tui-pagination .tui-ico-next::before {
+  content: '';
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/arrow-right.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  visibility: visible;
+}
+.tui-pagination .tui-page-btn .tui-prev {
+  visibility: hidden;
+}
