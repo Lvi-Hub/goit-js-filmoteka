@@ -1,7 +1,7 @@
 export function showSpinner() {
    const backdropSpinnerEl = document.createElement('div');
    const spinnerDiv = document.createElement('div');
-   const mainSectionEl = document.querySelector('.popular-films');
+   const mainSectionEl = document.querySelector('.section');
    mainSectionEl.prepend(backdropSpinnerEl);
    backdropSpinnerEl.prepend(spinnerDiv);
    spinnerDiv.innerHTML = `
