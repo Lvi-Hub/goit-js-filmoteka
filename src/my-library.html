@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alpha-Team Production</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha-Team Production</title>
 
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
-  <body>
-    <include src="./partials/header-my-library.html"></include>
+  <link rel="stylesheet" href="./sass/index.scss" />
+  <script type="module" src="./index.js"></script>
+</head>
 
-    <main>
-      <div class="container">
-        <section class="favorite-film section">
-          <ul class="favorite-film-list"></ul>
-          <include src="./partials/modal-favorite-list.html"></include>
-          <div id="tui-pagination-container" class="tui-pagination"></div>
-        </section>
-      </div>
-    </main>
+<body>
+  <include src="./partials/header-my-library.html"></include>
 
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal-about.html"></include>
-    <include src="./partials/buttonup.html"></include>
-    <script type="module" src="./index.js"></script>
-  </body>
+  <main>
+    <div class="container">
+      <section class="favorite-film section">
+        <ul class="favorite-film-list"></ul>
+        <include src="./partials/modal-favorite-list.html"></include>
+        <div id="tui-pagination-container" class="tui-pagination"></div>
+        <div class="pagination"></div>
+      </section>
+    </div>
+  </main>
+
+  <include src="./partials/footer.html"></include>
+  <include src="./partials/modal-about.html"></include>
+  <include src="./partials/buttonup.html"></include>
+  <script type="module" src="./index.js"></script>
+</body>
+
 </html>
