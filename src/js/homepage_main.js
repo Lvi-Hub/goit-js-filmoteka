@@ -47,14 +47,15 @@ export const moviesGenres = [
 
 const filmsListEl = document.querySelector('.film-list');
 
-async function fetchApi(pageNumber) {
+
+export async function fetchApi(pageNumber) {
   const POPULAR_MOVIES = 'language=en-US&sort_by=popularity.desc&include_adult=false';
 
   const response = await axios.get(`${BASE_URL}discover/movie?api_key=${API_KEY}&${POPULAR_MOVIES}&page=${pageNumber}`);
   return response.data;
 }
 
-async function getPopularMovies() {
+export async function getPopularMovies() {
   showSpinner();
 
   try {
@@ -62,6 +63,7 @@ async function getPopularMovies() {
 
     const movieData = movies.results;
     console.log(movies.results);
+
 
     const options = {
       totalItems: movies.total_results,
@@ -111,9 +113,10 @@ export function checkArrlength(arr) {
   return changedGenres;
 }
 
-function makeMarkupPopularMov(movieData) {
-  return movieData
-    .map(({ release_date, title, genre_ids, poster_path, id }) => {
+
+export function makeMarkupPopularMov(movieData) {
+    return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
+
       const genresArr = genre_ids.map((id) => getGenreName(id));
       const genreResult = checkArrlength(genresArr).join(', ');
       if (release_date === undefined) {

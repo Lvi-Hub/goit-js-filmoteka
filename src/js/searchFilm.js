@@ -2,6 +2,7 @@ import { fetchFilms, pageStart, page, resetPage } from './fetchFilms';
 import debounce from 'lodash.debounce';
 
 import { getGenreName, checkArrlength } from './homepage_main';
+import { addEventlListenertoFilmCard } from './modal-about';
 
 import Pagination from 'tui-pagination';
 import { paginationContainer } from "./pagination";
@@ -60,6 +61,7 @@ function onSearchFormSubmit(event) {
                                         });
 
                                         listEl.innerHTML = createFilmsMarkup(searchFilms);
+                                        addEventlListenertoFilmCard()
                                 }
                         
                         } catch {
@@ -84,7 +86,7 @@ function createFilmsMarkup(searchFilms) {
         } else {
             posterPath = `https://st4.depositphotos.com/21486874/31104/i/600/depositphotos_311048494-stock-photo-coming-soon-neon-light-announcement.jpg`;
         }    
-        return `<li class="movie-item" id = "${id}">
+        return `<li class="movie-item" movie-id = "${id}">
   <img src="${posterPath}" alt="movie poster" loading="lazy" class="movie-item__img"/>
   <h2 class="movie-item__title">${title}</h2>
   <p class="movie-item__text">
