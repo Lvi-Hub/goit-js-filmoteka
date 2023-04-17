@@ -1,3 +1,29 @@
+.box-overlay{
+  width: 100%;
+  height: 100%;
+position: absolute;
+ top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fceded4f;
+}
+.player{
+  position: absolute;
+  top: 40%;
+    left: 40%;
+}
+.img_wrapper{
+  position: relative;
+  overflow: hidden ;
+}
+
+.img_wrapper:hover .box-overlay {
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+
 .hidden{
  display: none;
 }
@@ -47,7 +73,7 @@ z-index: 10;
 .movie-card {
   position: absolute;
   height: 550px;
-overflow-y: scroll;
+overflow-y: auto;
   left: 50%;
   top: 10%;
   padding: 48px 20px;
@@ -55,6 +81,7 @@ overflow-y: scroll;
 
   width: 280px;
   background-color: #fff;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -78,23 +105,30 @@ overflow-y: scroll;
     min-height: 558px;
   }
 }
+.img_wrapper {
+   margin-bottom: 20px;
+  @media (min-width: 768px){
+    margin-right: 68px;
+  }
+    @media (min-width: 1280px){
+     margin-right: 16px;   
+    }
+  }
 
 .movie-card__img {
-  margin-bottom: 20px;
   width: 240px;
   border-radius: 5px;
 }
 
 @media (min-width: 768px) {
   .movie-card__img {
-    margin-right: 68px;
     width: 264px;
   }
 }
 
 @media (min-width: 1280px) {
   .movie-card__img {
-    margin-right: 16px;
+  
     width: 375px;
   }
 }
@@ -175,6 +209,7 @@ overflow-y: scroll;
   font-size: 12px;
   font-weight: bold;
   line-height: 1.66;
+      width: 280px;
 }
 
 .movie-card__buttons {
