@@ -1,4 +1,8 @@
-
+// import { addToWatchedFilms } from './add-to-watched';
+import {
+  setToLocalStorage,
+  getFromLocalStorage,
+} from './local-storage-functions';
 import { hideModalOnEscape, hideModal } from './closeModal';
 
 const card = document.querySelector('.backdrop');
@@ -70,11 +74,27 @@ function fillModal({
   };
 
   const addToWatched = document.querySelector('.movie-card__button-watched');
-  addToWatched.addEventListener('click', () => console.log(filmDetails));
+  const watchedFilms = getFromLocalStorage('watched') || [];
+  const isFilmNoWatched = watchedFilms.every(el => el.id !== filmDetails.id);
+  if (!isFilmNoWatched) {
+    addToWatched.innerHTML = 'DELETE FROM WATCHED';
+  }
+  const addToWatchedFilms = () => {
+    if (isFilmNoWatched && addToWatched.innerHTML === 'ADD TO WATCHED') {
+      watchedFilms.push(filmData);
+      setToLocalStorage('watched', watchedFilms);
+      addToWatched.innerHTML = 'DELETE FROM WATCHED';
+      return;
+    }
+  };
+  const handleAddToWatchedFilms = () => {
+    addToWatchedFilms(filmDetails);
+  };
+  addToWatched.addEventListener('click', handleAddToWatchedFilms);
 }
 
 function hideModalOnBackdropClick(e) {
   e.target === card && hideModal();
-  console.log(e.target);
+  // console.log(e.target);
   e.stopPropagation();
 }
