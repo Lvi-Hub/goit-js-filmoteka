@@ -1,4 +1,10 @@
 .footer {
+
+  z-index: 10;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+
   width: 100%;
   background: var(--color-footer-bg);
 }
@@ -18,8 +24,12 @@
   margin-left: 10px;
 }
 
+.students-span {
+  text-decoration: underline;
+
 .students-span,
 .students-link {
+
   margin-left: 10px;
   line-height: calc(16 / 14);
   align-items: center;
