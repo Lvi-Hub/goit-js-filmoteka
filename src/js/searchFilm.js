@@ -16,7 +16,7 @@ let pageNumber = 1;
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
-function onSearchFormSubmit(event) {
+export function onSearchFormSubmit(event) {
         event.preventDefault();
         // const pagination = new Pagination(paginationContainer);
         // pagination.reset();
@@ -84,7 +84,7 @@ function onSearchFormSubmit(event) {
 }
  
 
-function createFilmsMarkup(searchFilms) {
+export function createFilmsMarkup(searchFilms) {
     const filmsMarkup = searchFilms.data.results.map(({ id, title, poster_path, genre_ids, release_date }) => {
         const genresArr = genre_ids.map((id) => getGenreName(id));
         const genreResult = checkArrlength(genresArr).join(', ');
@@ -107,7 +107,7 @@ function createFilmsMarkup(searchFilms) {
 }
 
 
-function invalidSearchQuery() {
+export function invalidSearchQuery() {
         const invalidNotification = `<p class="search-notification"> Search result not successful. Enter the correct movie name. </p>`; 
         searchFormEl.insertAdjacentHTML('beforeend', invalidNotification);
         const removeInvalidNotification = debounce(() => {searchFormEl.lastElementChild.remove();
@@ -115,7 +115,7 @@ function invalidSearchQuery() {
         return removeInvalidNotification();
 }
 
-function emptySearchQuery() {
+export function emptySearchQuery() {
         const emptySearchNotification = `<p class="search-notification"> Search result not successful. Enter a movie name and try again. </p>`;
         searchFormEl.insertAdjacentHTML('beforeend', emptySearchNotification);
         const removeEmptySearchNotification = debounce(() => {searchFormEl.lastElementChild.remove();
@@ -125,7 +125,7 @@ function emptySearchQuery() {
 
 
 
-function invalidSearchImage() { 
+export function invalidSearchImage() { 
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification); 
         const invalidImg = `<li class='bottom-img-wrap'><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
@@ -133,7 +133,7 @@ function invalidSearchImage() {
         return
 }
 
-function emptySearchImg() {
+export function emptySearchImg() {
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification);
         const emptyImg = `<li class='bottom-img-wrap'><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`
