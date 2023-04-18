@@ -415,23 +415,26 @@ img {
 
 //////// theme///
 
-.toggle {
+.btn-toggle {
   position: absolute;
-  top: 35px;
-  right: 32px;
+  opacity: 0;
+  left: 200px;
+  top: 200px;
 
   @include tablet {
-    right: 15px;
-    top: 180px;
+    opacity: 1;
+    left: 640px;
+    top: 170px;
   }
 
   @include desktop {
-    right: 30px;
+    left: 1135px;
     top: 250px;
   }
 }
 
 .toggle label {
+
   position: relative;
   display: block;
   width: 50px;
@@ -471,7 +474,7 @@ img {
     margin: auto;
     width: 14px;
     height: 14px;
-    background-color: var(--white-general);
+    background-color: var(--color-red-accent);
     border: 1px solid var(--black-main);
     content: '';
     border-radius: 100px;
@@ -538,14 +541,9 @@ img {
   color: var(--black-main);
 }
 
-.btn-wrap:hover .btn-home,
-.btn-wrap:focus .btn-home,
-.btn-wrap:hover .btn-mylibrary,
-.btn-wrap:focus .btn-mylibrary
- {
-  background: #fff;
-  color: #b92f2c;
-  border: 1px solid #000000;
+
+.dark-theme .btnTeam {
+  background-color: var(--color-grey-about);
 }
 
 .btn-wrap .btn-queue:hover,
@@ -555,15 +553,27 @@ img {
   border: 1px solid transparent;
 }
 
-.btn-wrap .btn-watched:hover,
-.btn-wrap .btn-watched:focus {
-  background: #b92f2c;
-  color: #fff;
-  border: 1px solid transparent;
+
+.dark-theme .tui-pagination .tui-page-btn {
+  color: var(--white-general);
+  background-color: var(--black-main);
 }
 
 .btn-watched {
   background-color: var(--color-red-accent);
-  color: var(--white-general);
-  border: 1px transparent solid;
+
 }
+
+.dark-theme .cardsmember__name {
+  color: var(--black-main);
+}
+
+.dark-theme .members__title {
+  color: var(--black-main);
+}
+
+.dark-theme .search-section-notification {
+  color: var(--white-general);
+}
+
+
