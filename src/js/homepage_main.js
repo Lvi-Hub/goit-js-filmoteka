@@ -112,7 +112,7 @@ export function checkArrlength(arr) {
 
   return changedGenres;
 }
-
+ 
 
 export function makeMarkupPopularMov(movieData) {
     return movieData.map(({release_date, title, genre_ids, poster_path, id}) => {
