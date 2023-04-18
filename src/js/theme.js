@@ -5,6 +5,7 @@ const footer = document.querySelector('footer');
 if (localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark-theme');
   footer.classList.add('dark-theme');
+
   themeSwitch.checked = true;
 }
 
