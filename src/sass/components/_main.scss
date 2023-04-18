@@ -3,7 +3,11 @@
   background-color: var(--white-general);
 }
 .popular-films {
-  padding-bottom: 77px;
+  padding-bottom: 80px;
+  @include tablet {
+    padding-bottom: 137px;
+    gap: 60px;
+  }
 }
 
 .film-list,
