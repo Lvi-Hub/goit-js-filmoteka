@@ -553,3 +553,42 @@ img {
 .dark-theme .movie-card__info__small-text {
   color: var(--black-main);
 }
+
+.dark-theme .btnTeam {
+  // background-color: rgb(146, 154, 154);
+  background-color: var(--color-grey-about);
+}
+
+.dark-theme .popular-films {
+  background-color: var(--black-main);
+}
+
+// .dark-theme .hidden {
+//   color: var(--black-main);
+// }
+
+// .dark-theme .movie-item__title {
+//   color: var(--black-main);
+// }
+
+.dark-theme .tui-pagination .tui-page-btn {
+  color: var(--white-general);
+  background-color: var(--black-main);
+}
+
+.dark-theme .tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background-color: var(--color-red-accent);
+}
+
+.dark-theme .tui-pagination .tui-ico-next {
+  background-color: var(--color-red-accent);
+}
+
+.dark-theme .cardsmember__name {
+  color: var(--black-main);
+}
+
+.dark-theme .members__title {
+  color: var(--black-main);
+}
