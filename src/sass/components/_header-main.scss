@@ -443,7 +443,6 @@ img {
 
   @include desktop {
     left: 1135px;
-    // top: 20;
     top: 250px;
   }
 }
@@ -556,21 +555,12 @@ img {
 }
 
 .dark-theme .btnTeam {
-  // background-color: rgb(146, 154, 154);
   background-color: var(--color-grey-about);
 }
 
 .dark-theme .popular-films {
   background-color: var(--black-main);
 }
-
-// .dark-theme .hidden {
-//   color: var(--black-main);
-// }
-
-// .dark-theme .movie-item__title {
-//   color: var(--black-main);
-// }
 
 .dark-theme .tui-pagination .tui-page-btn {
   color: var(--white-general);
