@@ -10,13 +10,13 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
 
 const closeBtnEl = document.querySelector('.movie-card__close-btn');
-const movieTitle = document.querySelector('.movie-card__info__title');
-
+const modalEl = document.querySelector('.movie-card');
+const title = document.querySelector('.movie-card__info__title');
 const text = document.querySelector('.movie-card__info__small-text');
-const moviePopularity = document.querySelector('.movie-card__info__details-text');
+const popularity = document.querySelector('.movie-card__info__details-text');
 const originalTitle = document.querySelector('.original-title');
-const movieGenres = document.querySelector('.genres');
-const moviePoster = document.querySelector('.movie-card__img');
+const genres = document.querySelector('.genres');
+const poster = document.querySelector('.movie-card__img');
 
 function fetchFilms(id) {
   return fetch(`${BASE_URL}movie/${id}?api_key=${API_KEY}`).then(response => {
@@ -35,9 +35,7 @@ export function addEventlListenertoFilmCard() {
       card.classList.remove('hidden');
       body.classList.add('hide-scroll');
       const idFilm = event.currentTarget.getAttribute('movie-id');
-
-      moviePoster.removeAttribute('src');
-
+      poster.removeAttribute('src');
       fetchFilms(idFilm).then(data => {
         fillModal(data);
       });
@@ -56,14 +54,13 @@ function fillModal({
   poster_path,
   release_date,
 }) {
-  movieTitle.innerHTML = title;
-
+  title.innerHTML = title;
   text.innerHTML = overview;
-  moviePopularity.innerHTML = popularity;
+  popularity.innerHTML = popularity;
   originalTitle.innerHTML = title;
-  const genreNames = genres.map(genre => genre.name).join(', ');
-  movieGenres.innerHTML = genreNames;
-  moviePoster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
+  genreNames = genres.map(genre => genre.name).join(', ');
+  genres.innerHTML = genreNames;
+  poster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
 
   const filmDetails = {
     id,
@@ -127,3 +124,4 @@ function hideModalOnBackdropClick(e) {
   // console.log(e.target);
   e.stopPropagation();
 }
+//
