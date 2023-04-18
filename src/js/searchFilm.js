@@ -16,7 +16,7 @@ let pageNumber = 1;
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
-export function onSearchFormSubmit(event) {
+function onSearchFormSubmit(event) {
         event.preventDefault();
         // const pagination = new Pagination(paginationContainer);
         // pagination.reset();
@@ -125,7 +125,7 @@ function emptySearchQuery() {
 
 
 
-export function invalidSearchImage() { 
+function invalidSearchImage() { 
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification); 
         const invalidImg = `<li class='bottom-img-wrap'><img src="https://kor.ill.in.ua/m/1260x900/2150529.jpg" alt="no-movie" loading="lazy" class="invalid-search-img" /> </li>`
