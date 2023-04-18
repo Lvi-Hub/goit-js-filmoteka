@@ -516,7 +516,8 @@ img {
   color: var(--white-general);
 }
 
-.dark-theme .film-list {
+.dark-theme .film-list,
+.dark-theme  .favorite-film-list{
   background-color: var(--black-main);
   color: var(--white-general);
 }
@@ -564,4 +565,5 @@ img {
 .btn-watched {
   background-color: var(--color-red-accent);
   color: var(--white-general);
+  border: 1px transparent solid;
 }

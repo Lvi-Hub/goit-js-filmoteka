@@ -3,10 +3,15 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 
+
 import Pagination from "tui-pagination";
 // import { paginationContainer } from "./pagination";
 const queuePaginationContainer = document.querySelector('[js-queue-pagination]');
 const watchedPaginationContainer = document.querySelector('[js-watched-pagination]');
+
+import { addEventlListenertoFilmCard } from "./modal-about";
+import { showSpinner } from './show_spinner';
+
 // import {
 //   onSearchFormSubmit
 // } from './searchFilm';
@@ -108,7 +113,7 @@ queuePaginationContainer.classList.add('is-hidden');
 
 function createandShowFilmsMarkup(searchFilms) {
   const filmsMarkup = searchFilms
-    .map(({ id, title, poster_path, genres, release_date }) => {
+    .map(({ id, title, poster_path, genreNames, release_date }) => {
       let posterPath;
       if (poster_path) {
         posterPath = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`;
@@ -119,11 +124,13 @@ function createandShowFilmsMarkup(searchFilms) {
   <img src="${posterPath}" alt="movie poster" loading="lazy" class="movie-item__img"/>
   <h2 class="movie-item__title">${title}</h2>
   <p class="movie-item__text">
-    <span class="movie-item__genre">${genres}</span> |
+    <span class="movie-item__genre">${genreNames}</span> |
     <span class="movie-item__year">${release_date.slice(0, 4)}</span>
   </p>
 </li>`;
     })
     .join('');
   filmsListLibraryEl.innerHTML = filmsMarkup;
+  showSpinner();
+  addEventlListenertoFilmCard();
 }
