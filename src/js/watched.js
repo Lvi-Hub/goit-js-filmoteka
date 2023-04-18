@@ -130,16 +130,17 @@ if ((getFromLocalStorage('watched') || []).length < 21) {
 }
   
 
- function createandShowFilmsMarkup(searchFilms) {
-  const filmsMarkup = (searchFilms || [])
-    .map(({ id, title, poster_path, genreNames, release_date }) => {
-      let posterPath;
-      if (poster_path) {
-        posterPath = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`;
-      } else {
-        posterPath = `https://st4.depositphotos.com/21486874/31104/i/600/depositphotos_311048494-stock-photo-coming-soon-neon-light-announcement.jpg`;
-      }
-      return `<li class="movie-item" movie-id = "${id}">
+function createandShowFilmsMarkup(searchFilms) {
+  try {
+    const filmsMarkup = searchFilms
+      .map(({ id, title, poster_path, genreNames, release_date }) => {
+        let posterPath;
+        if (poster_path) {
+          posterPath = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`;
+        } else {
+          posterPath = `https://st4.depositphotos.com/21486874/31104/i/600/depositphotos_311048494-stock-photo-coming-soon-neon-light-announcement.jpg`;
+        }
+        return `<li class="movie-item" movie-id="${id}">
   <img src="${posterPath}" alt="movie poster" loading="lazy" class="movie-item__img"/>
   <h2 class="movie-item__title">${title}</h2>
   <p class="movie-item__text">
@@ -147,9 +148,12 @@ if ((getFromLocalStorage('watched') || []).length < 21) {
     <span class="movie-item__year">${release_date.slice(0, 4)}</span>
   </p>
 </li>`;
-    })
-    .join('');
-  filmsListLibraryEl.innerHTML = filmsMarkup;
-  showSpinner();
-  addEventlListenertoFilmCard();
+      })
+      .join('');
+    filmsListLibraryEl.innerHTML = filmsMarkup;
+    showSpinner();
+    addEventlListenertoFilmCard();
+  } catch (error) {
+    console.log('LocalStorage is empty');
+  }
 }
