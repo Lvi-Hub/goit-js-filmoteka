@@ -431,6 +431,22 @@ img {
   }
 }
 
+.btn-toggle {
+  position: absolute;
+  // left: 200px;
+  right: 200px;
+  top: 200px;
+  @include tablet {
+    left: 600px;
+    top: 0;
+  }
+
+  @include desktop {
+    left: 1100px;
+    top: 0;
+  }
+}
+
 .toggle label {
   position: relative;
   display: block;
