@@ -25,10 +25,17 @@ const queueBtnEl = document.querySelector('.btn-queue');
 const moviesToWatch = getFromLocalStorage('watched');
 const moviesInQueue = getFromLocalStorage('queue');
 
-console.log(moviesInQueue);
+console.log(moviesToWatch);
 
-// const myArray = [{id: 1, name: 'John'}, {id: 2, name: 'Jane'}, {id: 3, name: 'Bob'}, {id: 4, name: 'Alice'}, {id: 5, name: 'Mary'}];
-const chunkSize = 20; // розмір частини
+// if (moviesToWatch === undefined) {
+//   moviesToWatch = [];
+// }
+
+// if (moviesInQueue === undefined) {
+//   moviesInQueue = [];
+// }
+
+const chunkSize = 20; 
 const queueArray = [];
 const watchedArray = [];
 
@@ -36,7 +43,7 @@ const watchedArray = [];
 let pageNumber = 1;
 
 const queueOptions = {
-      totalItems: moviesInQueue.length,
+      totalItems: (moviesInQueue || []).length,
     page: pageNumber,
       itemsPerPage: 20,
       centerAlign: true,
@@ -45,7 +52,7 @@ const queueOptions = {
 };
     
 const toWatchOptions = {
-      totalItems: moviesToWatch.length,
+      totalItems: (moviesToWatch || []).length,
     page: pageNumber,
       itemsPerPage: 20,
       centerAlign: true,
@@ -53,21 +60,15 @@ const toWatchOptions = {
       visiblePages: 5,
     };
 
-while (moviesInQueue.length > 0) {
+while ((moviesInQueue || []).length > 0) {
   queueArray.push(moviesInQueue.slice(0, chunkSize));
   moviesInQueue.splice(0, chunkSize);
 }
 
-while (moviesToWatch.length > 0) {
+while ((moviesToWatch || []).length > 0) {
   watchedArray.push(moviesToWatch.slice(0, chunkSize));
   moviesToWatch.splice(0, chunkSize);
 }
-
-console.log(queueArray); 
-console.log(watchedArray);
-console.log(moviesToWatch);
-
-
 
 
 const queuePagination = new Pagination(queuePaginationContainer, queueOptions);
@@ -77,42 +78,60 @@ const toWatchPagination = new Pagination(watchedPaginationContainer, toWatchOpti
 
 // searchFormEl.addEventListener('submit', onSearchFormSubmit);
 watchBtnEl.addEventListener('click', () => {
-  createandShowFilmsMarkup(watchedArray[0]);
   queuePaginationContainer.classList.add('is-hidden');
-  watchedPaginationContainer.classList.remove('is-hidden');
   queuePagination.off();
+  
+  // console.log(getFromLocalStorage('watched').length);
+
+  if ((getFromLocalStorage('watched') || []).length < 21) {
+  watchedPaginationContainer.classList.add('is-hidden');
+  } else {
+  watchedPaginationContainer.classList.remove('is-hidden');
 
   toWatchPagination.on('beforeMove', event => {
     createandShowFilmsMarkup(watchedArray[event.page - 1]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   })
+}
 
 });
 
 queueBtnEl.addEventListener('click', () => {
   createandShowFilmsMarkup(queueArray[0]);
-  queuePaginationContainer.classList.remove('is-hidden');
   watchedPaginationContainer.classList.add('is-hidden');
-
   toWatchPagination.off();
+
+  if ((getFromLocalStorage('queue') || []).length < 21) {
+    queuePaginationContainer.classList.add('is-hidden');
+  } else {
+    queuePaginationContainer.classList.remove('is-hidden');
+  
   queuePagination.on('beforeMove', event => {
     createandShowFilmsMarkup(queueArray[event.page - 1]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   })
+  }
+  
 });
 
 createandShowFilmsMarkup(watchedArray[0]);
 queuePaginationContainer.classList.add('is-hidden');
+queuePagination.off();
+
+if ((getFromLocalStorage('watched') || []).length < 21) {
+  watchedPaginationContainer.classList.add('is-hidden');
+} else {
   watchedPaginationContainer.classList.remove('is-hidden');
-  queuePagination.off();
 
   toWatchPagination.on('beforeMove', event => {
     createandShowFilmsMarkup(watchedArray[event.page - 1]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   })
+}
+  
 
-function createandShowFilmsMarkup(searchFilms) {
-  const filmsMarkup = searchFilms
+ function createandShowFilmsMarkup(searchFilms) {
+  const filmsMarkup = (searchFilms || [])
     .map(({ id, title, poster_path, genreNames, release_date }) => {
       let posterPath;
       if (poster_path) {
