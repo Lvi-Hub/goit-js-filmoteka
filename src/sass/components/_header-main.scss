@@ -415,33 +415,35 @@ img {
 
 //////// theme///
 
-.toggle {
-  position: absolute;
-  top: 35px;
-  right: 32px;
+// .toggle {
+//   position: absolute;
+//   left: 420px;
+//   top: 200px;
 
-  @include tablet {
-    right: 15px;
-    top: 180px;
-  }
+//   @include tablet {
+//     left: 600px;
+//     top: 0;
+//   }
 
-  @include desktop {
-    right: 30px;
-    top: 250px;
-  }
-}
+//   @include desktop {
+//     left: 1100px;
+//     top: 0;
+//   }
+// }
 .btn-toggle {
   position: absolute;
+  opacity: 0;
   left: 200px;
   top: 200px;
   @include tablet {
+    opacity: 1;
     left: 600px;
-    top: 0;
+    top: 20;
   }
 
   @include desktop {
     left: 1100px;
-    top: 0;
+    top: 20;
   }
 }
 .toggle label {
