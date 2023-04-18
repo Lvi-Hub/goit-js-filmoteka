@@ -11,5 +11,8 @@ import './js/btn-up';
 import './js/fetchFilms';
 import './js/searchFilm';
 
+import './js/theme';
+
 import './js/modal-team';
 import './js/trailer';
+
