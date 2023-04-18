@@ -16,7 +16,7 @@ let pageNumber = 1;
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
-export function onSearchFormSubmit(event) {
+function onSearchFormSubmit(event) {
   event.preventDefault();
   // const pagination = new Pagination(paginationContainer);
   // pagination.reset();
