@@ -1,4 +1,3 @@
-// import { addToWatchedFilms } from './add-to-watched';
 import {
   setToLocalStorage,
   getFromLocalStorage,
@@ -78,19 +77,46 @@ function fillModal({
   const isFilmNoWatched = watchedFilms.every(el => el.id !== filmDetails.id);
   if (!isFilmNoWatched) {
     addToWatched.innerHTML = 'DELETE FROM WATCHED';
+  } else {
+    addToWatched.innerHTML = 'ADD TO WATCHED';
   }
   const addToWatchedFilms = () => {
-    if (isFilmNoWatched && addToWatched.innerHTML === 'ADD TO WATCHED') {
-      watchedFilms.push(filmData);
+    if (isFilmNoWatched) {
+      watchedFilms.push(filmDetails);
       setToLocalStorage('watched', watchedFilms);
       addToWatched.innerHTML = 'DELETE FROM WATCHED';
       return;
+    } else {
+      console.log('film is already added!');
     }
   };
   const handleAddToWatchedFilms = () => {
     addToWatchedFilms(filmDetails);
   };
   addToWatched.addEventListener('click', handleAddToWatchedFilms);
+
+  const addToQueue = document.querySelector('.movie-card__button-queue');
+  const queueFilms = getFromLocalStorage('queue') || [];
+  const isFilmNoQueue = queueFilms.every(el => el.id !== filmDetails.id);
+  if (!isFilmNoQueue) {
+    addToQueue.innerHTML = 'DELETE FROM QUEUE';
+  } else {
+    addToQueue.innerHTML = 'ADD TO QUEUE';
+  }
+  const addToQueueFilms = () => {
+    if (isFilmNoQueue) {
+      queueFilms.push(filmDetails);
+      setToLocalStorage('queue', queueFilms);
+      addToQueue.innerHTML = 'DELETE FROM QUEUE';
+      return;
+    } else {
+      console.log('film is already added!');
+    }
+  };
+  const handleAddToQueueFilms = () => {
+    addToQueueFilms(filmDetails);
+  };
+  addToQueue.addEventListener('click', handleAddToQueueFilms);
 }
 
 function hideModalOnBackdropClick(e) {
