@@ -80,6 +80,11 @@ function fillModal({
   } else {
     addToWatched.innerHTML = 'ADD TO WATCHED';
   }
+
+  const removeWatchedFilms = () => {
+    return watchedFilms.filter(el => el.id !== filmDetails.id);
+  };
+
   const addToWatchedFilms = () => {
     if (isFilmNoWatched) {
       watchedFilms.push(filmDetails);
@@ -87,7 +92,8 @@ function fillModal({
       addToWatched.innerHTML = 'DELETE FROM WATCHED';
       return;
     } else {
-      console.log('film is already added!');
+      setToLocalStorage('watched', removeWatchedFilms());
+      addToWatched.innerHTML = 'ADD TO WATCHED';
     }
   };
   const handleAddToWatchedFilms = () => {
@@ -103,6 +109,11 @@ function fillModal({
   } else {
     addToQueue.innerHTML = 'ADD TO QUEUE';
   }
+
+  const removeQueueFilms = () => {
+    return queueFilms.filter(el => el.id !== filmDetails.id);
+  };
+
   const addToQueueFilms = () => {
     if (isFilmNoQueue) {
       queueFilms.push(filmDetails);
@@ -110,7 +121,8 @@ function fillModal({
       addToQueue.innerHTML = 'DELETE FROM QUEUE';
       return;
     } else {
-      console.log('film is already added!');
+      setToLocalStorage('queue', removeQueueFilms());
+      addToQueue.innerHTML = 'ADD TO QUEUE';
     }
   };
   const handleAddToQueueFilms = () => {
