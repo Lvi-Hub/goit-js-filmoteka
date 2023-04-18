@@ -28,18 +28,18 @@ function fetchFilms(id) {
 }
 
 export function addEventlListenertoFilmCard() {
- const filmCardElements = document.querySelectorAll('[movie-id]');
-filmCardElements.forEach(element => {
-  element.addEventListener('click', event => {
-    closeBtnEl.addEventListener("click", hideModal);
-    card.classList.remove('hidden')
-    body.classList.add('scroll')
-    const idFilm = event.currentTarget.getAttribute('movie-id');
-    poster.removeAttribute('src');
-    fetchFilms(idFilm).then((data) => {
-      fillModal(data);
-     })
-     ;
+  const filmCardElements = document.querySelectorAll('[movie-id]');
+  filmCardElements.forEach(element => {
+    element.addEventListener('click', event => {
+      closeBtnEl.addEventListener('click', hideModal);
+      card.classList.remove('hidden');
+      body.classList.add('hide-scroll');
+      const idFilm = event.currentTarget.getAttribute('movie-id');
+      poster.removeAttribute('src');
+      fetchFilms(idFilm).then(data => {
+        fillModal(data);
+      });
+    });
   });
   window.addEventListener('keydown', hideModalOnEscape);
   window.addEventListener('click', hideModalOnBackdropClick);
@@ -73,19 +73,6 @@ function fillModal({
   };
 
   const addToWatched = document.querySelector('.movie-card__button-watched');
-
-  addToWatched.addEventListener('click',() => console.log(filmDetails));
-    //  setTimeout(
-  //  window.addEventListener("click", hideModalOnCLick), 100)
-  // console.log(data);
-};
-
-// const closeModal = document.querySelector(".movie-card__close-btn");
-// closeModal.addEventListener('click', () => {
-//   card.classList.add("hidden") 
-//    body.classList.remove('scroll')
-// })
- 
   const watchedFilms = getFromLocalStorage('watched') || [];
   const isFilmNoWatched = watchedFilms.every(el => el.id !== filmDetails.id);
   if (!isFilmNoWatched) {
@@ -137,4 +124,3 @@ function hideModalOnBackdropClick(e) {
   // console.log(e.target);
   e.stopPropagation();
 }
-
