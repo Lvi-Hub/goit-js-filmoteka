@@ -57,7 +57,7 @@ function fillModal({
   text.innerHTML = overview;
   moviePopularity.innerHTML = popularity;
   originalTitle.innerHTML = title;
-  genreNames = genres.map(genre => genre.name).join(', ');
+  const genreNames = genres.map(genre => genre.name).join(', ');
   movieGenres.innerHTML = genreNames;
   moviePoster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
 
