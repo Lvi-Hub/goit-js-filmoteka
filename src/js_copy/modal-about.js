@@ -124,3 +124,4 @@ function hideModalOnBackdropClick(e) {
   // console.log(e.target);
   e.stopPropagation();
 }
+//
