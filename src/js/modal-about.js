@@ -11,7 +11,7 @@ const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
 
 const closeBtnEl = document.querySelector('.movie-card__close-btn');
 const modalEl = document.querySelector('.movie-card');
-const title = document.querySelector('.movie-card__info__title');
+const movieTitle = document.querySelector('.movie-card__info__title');
 const text = document.querySelector('.movie-card__info__small-text');
 const popularity = document.querySelector('.movie-card__info__details-text');
 const originalTitle = document.querySelector('.original-title');
@@ -54,7 +54,7 @@ function fillModal({
   poster_path,
   release_date,
 }) {
-  title.innerHTML = title;
+  movieTitle.innerHTML = title;
   text.innerHTML = overview;
   popularity.innerHTML = popularity;
   originalTitle.innerHTML = title;
