@@ -5,11 +5,12 @@ const footer = document.querySelector('footer');
 if (localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark-theme');
   footer.classList.add('dark-theme');
+
   themeSwitch.checked = true;
 }
 
 themeSwitch.addEventListener('change', function () {
-  if (themeSwitch.checked) {
+  if (this.checked) {
     localStorage.setItem('theme', 'dark');
     body.classList.add('dark-theme');
     footer.classList.add('dark-theme');
