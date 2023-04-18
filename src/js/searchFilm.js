@@ -84,7 +84,7 @@ export function onSearchFormSubmit(event) {
 }
  
 
-export function createFilmsMarkup(searchFilms) {
+function createFilmsMarkup(searchFilms) {
     const filmsMarkup = searchFilms.data.results.map(({ id, title, poster_path, genre_ids, release_date }) => {
         const genresArr = genre_ids.map((id) => getGenreName(id));
         const genreResult = checkArrlength(genresArr).join(', ');
@@ -107,7 +107,7 @@ export function createFilmsMarkup(searchFilms) {
 }
 
 
-export function invalidSearchQuery() {
+function invalidSearchQuery() {
         const invalidNotification = `<p class="search-notification"> Search result not successful. Enter the correct movie name. </p>`; 
         searchFormEl.insertAdjacentHTML('beforeend', invalidNotification);
         const removeInvalidNotification = debounce(() => {searchFormEl.lastElementChild.remove();
@@ -115,7 +115,7 @@ export function invalidSearchQuery() {
         return removeInvalidNotification();
 }
 
-export function emptySearchQuery() {
+function emptySearchQuery() {
         const emptySearchNotification = `<p class="search-notification"> Search result not successful. Enter a movie name and try again. </p>`;
         searchFormEl.insertAdjacentHTML('beforeend', emptySearchNotification);
         const removeEmptySearchNotification = debounce(() => {searchFormEl.lastElementChild.remove();
@@ -133,7 +133,7 @@ export function invalidSearchImage() {
         return
 }
 
-export function emptySearchImg() {
+function emptySearchImg() {
         const emptyNotification = `<li> <p class="search-section-notification"> OOPS! I don't understand you. Please, try again. </p> </li>`;
         listEl.insertAdjacentHTML('beforeend', emptyNotification);
         const emptyImg = `<li class='bottom-img-wrap'><img src="https://kartinkin.net/pics/uploads/posts/2022-08/1660830950_1-kartinkin-net-p-oboi-s-dedpulom-krasivo-1.jpg" alt="no-movie" loading="lazy" class="invalid-search-img"/> </li>`

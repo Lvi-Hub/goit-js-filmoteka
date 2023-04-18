@@ -3,13 +3,9 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 
-import {
-  onSearchFormSubmit,
-  invalidSearchQuery,
-  emptySearchQuery,
-  invalidSearchImage,
-  emptySearchImg,
-} from './searchFilm';
+// import {
+//   onSearchFormSubmit
+// } from './searchFilm';
 
 const searchFormEl = document.querySelector('#search-form');
 const filmsListLibraryEl = document.querySelector('.favorite-film-list');
@@ -20,7 +16,7 @@ const moviesToWatch = getFromLocalStorage('watched');
 const moviesInQueue = getFromLocalStorage('queue');
 let pageNumber = 1;
 
-searchFormEl.addEventListener('submit', onSearchFormSubmit);
+// searchFormEl.addEventListener('submit', onSearchFormSubmit);
 watchBtnEl.addEventListener('click', () =>
   createandShowFilmsMarkup(moviesToWatch)
 );
