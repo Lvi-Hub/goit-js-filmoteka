@@ -3,6 +3,7 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 import { addEventlListenertoFilmCard } from "./modal-about";
+import { showSpinner } from './show_spinner';
 // import {
 //   onSearchFormSubmit
 // } from './searchFilm';
@@ -46,5 +47,6 @@ function createandShowFilmsMarkup(searchFilms) {
     })
     .join('');
   filmsListLibraryEl.innerHTML = filmsMarkup;
+  showSpinner();
   addEventlListenertoFilmCard();
 }
