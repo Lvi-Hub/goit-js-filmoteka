@@ -3,6 +3,7 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 // import { makeMarkupPopularMov } from './homepage_main'
+import { addEventlListenertoFilmCard } from './modal-about';
 
 
 
@@ -20,6 +21,7 @@ function handlerWatchedMovieBtn() {
 
     const markUp = makeMarkupPopularMov(watchedMovieList);
     watchedList.insertAdjacentHTML('afterbegin', markUp);
+    addEventlListenertoFilmCard();
 
 
 }
