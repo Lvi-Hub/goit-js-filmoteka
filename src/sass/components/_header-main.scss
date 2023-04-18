@@ -437,13 +437,14 @@ img {
   top: 200px;
   @include tablet {
     opacity: 1;
-    left: 600px;
-    top: 20;
+    left: 640px;
+    top: 170px;
   }
 
   @include desktop {
-    left: 1100px;
-    top: 20;
+    left: 1135px;
+    // top: 20;
+    top: 250px;
   }
 }
 .toggle label {
