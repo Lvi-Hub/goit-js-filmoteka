@@ -10,13 +10,13 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '481cbb6dba5121edc01136f73aa6b3c6';
 
 const closeBtnEl = document.querySelector('.movie-card__close-btn');
-const modalEl = document.querySelector('.movie-card');
 const movieTitle = document.querySelector('.movie-card__info__title');
-const textEl = document.querySelector('.movie-card__info__small-text');
-const popularityEl = document.querySelector('.movie-card__info__details-text');
+
+const text = document.querySelector('.movie-card__info__small-text');
+const moviePopularity = document.querySelector('.movie-card__info__details-text');
 const originalTitle = document.querySelector('.original-title');
-const genresEl = document.querySelector('.genres');
-const posterEl = document.querySelector('.movie-card__img');
+const movieGenres = document.querySelector('.genres');
+const moviePoster = document.querySelector('.movie-card__img');
 
 function fetchFilms(id) {
   return fetch(`${BASE_URL}movie/${id}?api_key=${API_KEY}`).then(response => {
@@ -35,7 +35,9 @@ export function addEventlListenertoFilmCard() {
       card.classList.remove('hidden');
       body.classList.add('hide-scroll');
       const idFilm = event.currentTarget.getAttribute('movie-id');
-      posterEl.removeAttribute('src');
+
+      moviePoster.removeAttribute('src');
+
       fetchFilms(idFilm).then(data => {
         fillModal(data);
       });
@@ -55,12 +57,13 @@ function fillModal({
   release_date,
 }) {
   movieTitle.innerHTML = title;
-  textEl.innerHTML = overview;
-  popularityEl.innerHTML = popularity;
+
+  text.innerHTML = overview;
+  moviePopularity.innerHTML = popularity;
   originalTitle.innerHTML = title;
-  genreNames = genres.map(genre => genre.name).join(', ');
-  genresEl.innerHTML = genreNames;
-  posterEl.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
+  const genreNames = genres.map(genre => genre.name).join(', ');
+  movieGenres.innerHTML = genreNames;
+  moviePoster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
 
   const filmDetails = {
     id,
