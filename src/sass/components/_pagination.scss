@@ -7,13 +7,15 @@
 
 .tui-pagination {
   @media screen and (max-width: 480px) {
-    margin: 40px auto;
+    //margin: 40px auto;
+    padding-top: 60px;
   }
   display: flex;
   gap: 3px;
   justify-content: center;
   height: 40px;
-  margin: 60px auto;
+  // margin: 60px auto;
+  padding-top: 40px;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -31,14 +33,15 @@
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  background: #ffffffcb;
-  color: #333;
+  background: #ffffff;
+  color: #000;
   font-size: 12px;
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
   border: none;
+  transition: all 250ms;
 }
 
 .tui-pagination .tui-prev-is-ellip,
@@ -53,7 +56,8 @@
   padding: 16px;
 }
 
-.tui-pagination .tui-page-btn:hover {
+.tui-pagination .tui-page-btn:hover,
+.tui-pagination .tui-page-btn:focus {
   background-color: #b92f2c;
   color: #fff;
 }
@@ -70,15 +74,16 @@
 
 .tui-pagination .tui-prev,
 .tui-pagination .tui-next {
+  transition: all 250ms;
   height: 40px;
   width: 40px;
   background-color: #f7f7f7;
 }
 
-.tui-pagination .tui-prev:hover .tui-ico-prev::before,
-.tui-pagination .tui-next:hover .tui-ico-next::before {
-  fill: #fff;
-}
+// .tui-pagination .tui-prev:hover .tui-ico-prev::before,
+// .tui-pagination .tui-next:hover .tui-ico-next::before {
+//   fill: #fff;
+// }
 
 .tui-pagination .tui-ico-ellip::before {
   content: '';
@@ -98,7 +103,7 @@
   content: '';
   width: 16px;
   height: 16px;
-  background-image: url('../images/arrow-left.svg');
+  background-image: url('../images/arrow-back-page.svg');
   fill: #000;
   background-repeat: no-repeat;
   background-size: contain;
@@ -108,18 +113,26 @@
   visibility: visible;
 }
 
+.tui-page-btn.tui-prev:hover > .tui-ico-prev::before {
+  background-image: url('../images/arrow-back-page-hov.svg');
+}
+
 .tui-pagination .tui-ico-next::before {
   content: '';
   display: inline-flex;
   width: 16px;
   height: 16px;
-  background-image: url('../images/arrow-right.svg');
+  background-image: url('../images/arrow-next-page.svg');
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
   justify-content: center;
   background-size: contain;
   visibility: visible;
+}
+
+.tui-page-btn.tui-next:hover > .tui-ico-next::before {
+  background-image: url('../images/arrow-next-page-hov.svg');
 }
 
 .tui-pagination .tui-ico-next::before:hover,

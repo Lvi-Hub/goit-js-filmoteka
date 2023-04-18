@@ -1,13 +1,21 @@
 .footer {
   z-index: 10;
-  position: fixed;
+  position: relative;
   left: 0px;
   bottom: 0px;
 
   width: 100%;
   background: var(--color-footer-bg);
+
+  @include tablet {
+    position: fixed;
+  }
+
+  @include desktop {
+  }
 }
 .footer-container {
+  position: relative;
   padding-top: 28px;
   padding-bottom: 28px;
 }
@@ -23,16 +31,27 @@
   margin-left: 10px;
 }
 
-.students-span {
-  text-decoration: underline;
-}
 .students-span,
 .students-link {
   margin-left: 10px;
   line-height: calc(16 / 14);
   align-items: center;
   color: var(--color-grey-about);
+  
+  
 }
+
+
+.students-span.hover-item {
+  text-decoration: underline;
+  border: none;
+  background: none;
+}
+
+.students-span:hover {
+  color: var(--color-red-accent);
+}
+
 .students-link {
   text-decoration: underline;
 }
