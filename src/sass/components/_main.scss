@@ -57,6 +57,15 @@
   -moz-box-shadow: 3px 2px 5px 4px rgba(0, 0, 0, 0.7);
 }
 
+.dark-theme .movie-item:hover {
+   scale: 1.04;
+   transition: scale 350ms;
+   box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.7);
+   -webkit-box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.7);
+   -moz-box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.7);
+ }
+ 
+
 .movie-item__img {
   width: 100%;
   // width: 280px;
