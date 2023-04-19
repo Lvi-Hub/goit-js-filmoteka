@@ -90,8 +90,11 @@ function fillModal({
 
   const addToWatchedFilms = () => {
     if (isFilmNoWatched) {
+      console.log(!watchedFilms.find(el => el.id === filmDetails.id));
+      if(!watchedFilms.find(el => el.id === filmDetails.id)){
       watchedFilms.push(filmDetails);
       setToLocalStorage('watched', watchedFilms);
+    }
       addToWatched.innerHTML = 'DELETE FROM WATCHED';
       return;
     } else {
@@ -119,8 +122,11 @@ function fillModal({
 
   const addToQueueFilms = () => {
     if (isFilmNoQueue) {
+      console.log(!queueFilms.find(el => el.id === filmDetails.id))
+      if(!queueFilms.find(el => el.id == filmDetails.id)){
       queueFilms.push(filmDetails);
       setToLocalStorage('queue', queueFilms);
+    }
       addToQueue.innerHTML = 'DELETE FROM QUEUE';
       return;
     } else {
