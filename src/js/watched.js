@@ -3,13 +3,13 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 
-
 import Pagination from "tui-pagination";
 // import { paginationContainer } from "./pagination";
 const queuePaginationContainer = document.querySelector('[js-queue-pagination]');
 const watchedPaginationContainer = document.querySelector('[js-watched-pagination]');
 
 import { addEventlListenertoFilmCard } from "./modal-about";
+
 import { showSpinner } from './show_spinner';
 
 // import {
@@ -22,8 +22,12 @@ const watchBtnEl = document.querySelector('.btn-watched');
 const queueBtnEl = document.querySelector('.btn-queue');
 
 
-const moviesToWatch = getFromLocalStorage('watched');
-const moviesInQueue = getFromLocalStorage('queue');
+const moviesToWatch = getFromLocalStorage('watched') || [];
+const moviesInQueue = getFromLocalStorage('queue') || [];
+
+
+//const moviesToWatch = getFromLocalStorage('watched');
+//const moviesInQueue = getFromLocalStorage('queue');
 
 console.log(moviesInQueue);
 
@@ -31,8 +35,6 @@ console.log(moviesInQueue);
 const chunkSize = 20; // розмір частини
 const queueArray = [];
 const watchedArray = [];
-
-
 let pageNumber = 1;
 
 const queueOptions = {
