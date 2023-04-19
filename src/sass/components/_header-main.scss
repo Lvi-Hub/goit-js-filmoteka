@@ -500,12 +500,14 @@ img {
 }
 
 .dark-theme {
-  background-color: var(--black-main);
+  // background-color: var(--black-main);
+  background-color: var(--color-theme);
   color: var(--white-general);
 }
 
 .dark-theme footer {
-  background-color: var(--black-main);
+  // background-color: var(--black-main);
+  background-color: var(--color-theme);
   color: var(--white-general);
 }
 
@@ -520,7 +522,8 @@ img {
 
 .dark-theme .film-list,
 .dark-theme .favorite-film-list {
-  background-color: var(--black-main);
+  // background-color: var(--black-main);
+  background-color: var(--color-theme);
   color: var(--white-general);
 }
 
@@ -553,11 +556,17 @@ img {
 
 .dark-theme .tui-pagination .tui-page-btn {
   color: var(--white-general);
+  background-color: var(--color-grey-about);
+}
+
+.dark-theme .tui-pagination .tui-page-btn:hover {
+  color: var(--color-white);
   background-color: var(--color-red-accent);
 }
 
 .dark-theme .tui-pagination {
-  background-color: var(--black-main);
+  // background-color: var(--black-main);
+  background-color: var(--color-theme);
 }
 
 .dark-theme .cardsmember__name {
@@ -573,5 +582,6 @@ img {
 }
 
 .dark-theme .popular-films {
-  background-color: var(--black-main);
+  // background-color: var(--black-main);
+  background-color: var(--color-theme);
 }
