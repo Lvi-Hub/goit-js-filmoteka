@@ -3,6 +3,8 @@
   color: var(--secondary-active-color);
 }
 .btn-up {
+  display: flex;
+  justify-content: center;
   z-index: 11;
   position: fixed;
   @media screen and (max-width: 480px) {
