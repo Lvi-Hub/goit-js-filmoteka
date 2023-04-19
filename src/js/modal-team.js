@@ -4,13 +4,14 @@ const bodyEl = document.querySelector('body');
 const closeBtnEl = document.querySelector('.modal__button');
 
 modalOpenEl.addEventListener('click', openFooterModal);
-document.addEventListener('keydown', footerModalEsc);
-backdropFooterEl.addEventListener('click', footerModalEsc);
-backdropFooterEl.addEventListener('click', modalFooterCloseOnClick);
+
 
 function openFooterModal() {
   backdropFooterEl.classList.remove('is-hidden');
   document.querySelector('body').classList.add('noScroll');
+  document.addEventListener('keydown', footerModalEsc);
+  backdropFooterEl.addEventListener('click', footerModalEsc);
+  closeBtnEl.addEventListener('click', modalFooterCloseOnClick);
   return;
 }
 
