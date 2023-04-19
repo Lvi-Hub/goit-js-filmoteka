@@ -16,7 +16,7 @@ import { showSpinner } from './show_spinner';
 //   onSearchFormSubmit
 // } from './searchFilm';
 
-const searchFormEl = document.querySelector('#search-form');
+
 const filmsListLibraryEl = document.querySelector('.favorite-film-list');
 const watchBtnEl = document.querySelector('.btn-watched');
 const queueBtnEl = document.querySelector('.btn-queue');
@@ -82,7 +82,7 @@ const toWatchPagination = new Pagination(watchedPaginationContainer, toWatchOpti
 watchBtnEl.addEventListener('click', () => {
   queuePaginationContainer.classList.add('is-hidden');
   queuePagination.off();
-  
+  createandShowFilmsMarkup(getFromLocalStorage('watched'));
   // console.log(getFromLocalStorage('watched').length);
 
   if ((getFromLocalStorage('watched') || []).length < 21) {
@@ -102,6 +102,7 @@ queueBtnEl.addEventListener('click', () => {
   createandShowFilmsMarkup(queueArray[0]);
   watchedPaginationContainer.classList.add('is-hidden');
   toWatchPagination.off();
+  createandShowFilmsMarkup(getFromLocalStorage('queue'));
 
   if ((getFromLocalStorage('queue') || []).length < 21) {
     queuePaginationContainer.classList.add('is-hidden');
