@@ -37,7 +37,21 @@
   line-height: calc(16 / 14);
   align-items: center;
   color: var(--color-grey-about);
+  
+  
 }
+
+
+.students-span.hover-item {
+  text-decoration: underline;
+  border: none;
+  background: none;
+}
+
+.students-span:hover {
+  color: var(--color-red-accent);
+}
+
 .students-link {
   text-decoration: underline;
 }
