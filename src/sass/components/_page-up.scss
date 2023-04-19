@@ -5,6 +5,10 @@
 .btn-up {
   z-index: 11;
   position: fixed;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 30px;
     right: 30px;
