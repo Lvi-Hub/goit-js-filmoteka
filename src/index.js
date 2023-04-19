@@ -14,4 +14,4 @@ import './js/searchFilm';
 import './js/theme';
 
 import './js/modal-team';
-import './js/trailer';
+//import './js/trailer';
