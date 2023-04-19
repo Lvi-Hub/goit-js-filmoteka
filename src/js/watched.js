@@ -2,7 +2,7 @@ import {
   setToLocalStorage,
   getFromLocalStorage,
 } from './local-storage-functions';
-import { addEventlListenertoFilmCard } from "./modal-about";
+import { addEventlListenertoFilmCard } from './modal-about';
 import { showSpinner } from './show_spinner';
 // import {
 //   onSearchFormSubmit
@@ -13,8 +13,8 @@ const filmsListLibraryEl = document.querySelector('.favorite-film-list');
 const watchBtnEl = document.querySelector('.btn-watched');
 const queueBtnEl = document.querySelector('.btn-queue');
 
-const moviesToWatch = getFromLocalStorage('watched');
-const moviesInQueue = getFromLocalStorage('queue');
+const moviesToWatch = getFromLocalStorage('watched') || [];
+const moviesInQueue = getFromLocalStorage('queue') || [];
 let pageNumber = 1;
 
 // searchFormEl.addEventListener('submit', onSearchFormSubmit);
