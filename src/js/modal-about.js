@@ -13,7 +13,9 @@ const closeBtnEl = document.querySelector('.movie-card__close-btn');
 const movieTitle = document.querySelector('.movie-card__info__title');
 
 const text = document.querySelector('.movie-card__info__small-text');
-const moviePopularity = document.querySelector('.movie-card__info__details-text');
+const moviePopularity = document.querySelector(
+  '.movie-card__info__details-text'
+);
 const originalTitle = document.querySelector('.original-title');
 const movieGenres = document.querySelector('.genres');
 const moviePoster = document.querySelector('.movie-card__img');
@@ -63,7 +65,10 @@ function fillModal({
   originalTitle.innerHTML = title;
   const genreNames = genres.map(genre => genre.name).join(', ');
   movieGenres.innerHTML = genreNames;
-  moviePoster.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + poster_path);
+  moviePoster.setAttribute(
+    'src',
+    'https://image.tmdb.org/t/p/w500' + poster_path
+  );
 
   const filmDetails = {
     id,
@@ -75,69 +80,105 @@ function fillModal({
     release_date,
   };
 
-  const addToWatched = document.querySelector('.movie-card__button-watched');
+  const addToWatchedBtnEl = document.querySelector(
+    '.movie-card__button-watched'
+  );
   const watchedFilms = getFromLocalStorage('watched') || [];
-  const isFilmNoWatched = watchedFilms.every(el => el.id !== filmDetails.id);
-  if (!isFilmNoWatched) {
-    addToWatched.innerHTML = 'DELETE FROM WATCHED';
+  const findFilmWatched = watchedFilms.find(el => el.id === filmDetails.id);
+  let isFilmWatched;
+  if (findFilmWatched === undefined) {
+    isFilmWatched = false;
   } else {
-    addToWatched.innerHTML = 'ADD TO WATCHED';
+    isFilmWatched = true;
+  }
+  if (isFilmWatched) {
+    addToWatchedBtnEl.innerHTML = 'DELETE FROM WATCHED';
+  } else {
+    addToWatchedBtnEl.innerHTML = 'ADD TO WATCHED';
   }
 
-  const removeWatchedFilms = () => {
-    return watchedFilms.filter(el => el.id !== filmDetails.id);
-  };
+  addToWatchedBtnEl.addEventListener('click', handleAddToWatchedFilms);
 
-  const addToWatchedFilms = () => {
-    if (isFilmNoWatched) {
-      console.log(!watchedFilms.find(el => el.id === filmDetails.id));
-      if(!watchedFilms.find(el => el.id === filmDetails.id)){
-      watchedFilms.push(filmDetails);
-      setToLocalStorage('watched', watchedFilms);
+  function handleAddToWatchedFilms() {
+    const list = getFromLocalStorage('watched') || [];
+    const findFilm = list.find(el => el.id === filmDetails.id);
+    let isThisFilmWatched;
+    if (findFilm === undefined) {
+      isThisFilmWatched = false;
+    } else {
+      isThisFilmWatched = true;
     }
-      addToWatched.innerHTML = 'DELETE FROM WATCHED';
+    if (isThisFilmWatched) {
+      console.log(filmDetails.id);
+      removeWatchedFilms(filmDetails.id, list);
       return;
     } else {
-      setToLocalStorage('watched', removeWatchedFilms());
-      addToWatched.innerHTML = 'ADD TO WATCHED';
+      addToWatchedFilms(filmDetails, list);
     }
-  };
-  const handleAddToWatchedFilms = () => {
-    addToWatchedFilms(filmDetails);
-  };
-  addToWatched.addEventListener('click', handleAddToWatchedFilms);
+  }
 
-  const addToQueue = document.querySelector('.movie-card__button-queue');
+  function addToWatchedFilms(film, list) {
+    list.push(film);
+    setToLocalStorage('watched', list);
+    addToWatchedBtnEl.innerHTML = 'DELETE FROM WATCHED';
+  }
+
+  function removeWatchedFilms(id, list) {
+    const onlyNotThisFilms = list.filter(el => el.id !== id);
+    setToLocalStorage('watched', onlyNotThisFilms);
+    addToWatchedBtnEl.innerHTML = 'ADD TO WATCHED';
+  }
+
+  const addToQueueBtnEl = document.querySelector('.movie-card__button-queue');
   const queueFilms = getFromLocalStorage('queue') || [];
-  const isFilmNoQueue = queueFilms.every(el => el.id !== filmDetails.id);
-  if (!isFilmNoQueue) {
-    addToQueue.innerHTML = 'DELETE FROM QUEUE';
+  const findFilmQueue = queueFilms.find(el => el.id === filmDetails.id);
+  let isFilmQueue;
+  if (findFilmQueue === undefined) {
+    isFilmQueue = false;
   } else {
-    addToQueue.innerHTML = 'ADD TO QUEUE';
+    isFilmQueue = true;
+  }
+  if (isFilmQueue) {
+    addToQueueBtnEl.innerHTML = 'DELETE FROM QUEUE';
+  } else {
+    addToQueueBtnEl.innerHTML = 'ADD TO QUEUE';
   }
 
-  const removeQueueFilms = () => {
-    return queueFilms.filter(el => el.id !== filmDetails.id);
-  };
+  addToQueueBtnEl.addEventListener('click', handleAddToQueueFilms);
 
-  const addToQueueFilms = () => {
-    if (isFilmNoQueue) {
-      console.log(!queueFilms.find(el => el.id === filmDetails.id))
-      if(!queueFilms.find(el => el.id == filmDetails.id)){
-      queueFilms.push(filmDetails);
-      setToLocalStorage('queue', queueFilms);
+  function handleAddToQueueFilms() {
+    const list = getFromLocalStorage('queue') || [];
+    const findFilm = list.find(el => el.id === filmDetails.id);
+    let isThisFilmQueue;
+    if (findFilm === undefined) {
+      isThisFilmQueue = false;
+    } else {
+      isThisFilmQueue = true;
     }
-      addToQueue.innerHTML = 'DELETE FROM QUEUE';
+    if (isThisFilmQueue) {
+      console.log(filmDetails.id);
+      removeQueueFilms(filmDetails.id);
       return;
     } else {
-      setToLocalStorage('queue', removeQueueFilms());
-      addToQueue.innerHTML = 'ADD TO QUEUE';
+      addToQueueFilms(filmDetails);
     }
-  };
-  const handleAddToQueueFilms = () => {
-    addToQueueFilms(filmDetails);
-  };
-  addToQueue.addEventListener('click', handleAddToQueueFilms);
+  }
+
+  function addToQueueFilms(film) {
+    let listQueueFilms = getFromLocalStorage('queue') || [];
+    listQueueFilms.push(film);
+    setToLocalStorage('queue', listQueueFilms);
+    listQueueFilms = [];
+    addToQueueBtnEl.innerHTML = 'DELETE FROM QUEUE';
+  }
+
+  function removeQueueFilms(id) {
+    let listQueueFilms = getFromLocalStorage('queue') || [];
+    const onlyNotThisFilms = listQueueFilms.filter(el => el.id !== id);
+    setToLocalStorage('queue', onlyNotThisFilms);
+    listQueueFilms = [];
+    addToQueueBtnEl.innerHTML = 'ADD TO QUEUE';
+  }
 }
 
 function hideModalOnBackdropClick(e) {

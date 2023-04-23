@@ -3,12 +3,16 @@ import {
   getFromLocalStorage,
 } from './local-storage-functions';
 
-import Pagination from "tui-pagination";
+import Pagination from 'tui-pagination';
 // import { paginationContainer } from "./pagination";
-const queuePaginationContainer = document.querySelector('[js-queue-pagination]');
-const watchedPaginationContainer = document.querySelector('[js-watched-pagination]');
+const queuePaginationContainer = document.querySelector(
+  '[js-queue-pagination]'
+);
+const watchedPaginationContainer = document.querySelector(
+  '[js-watched-pagination]'
+);
 
-import { addEventlListenertoFilmCard } from "./modal-about";
+import { addEventlListenertoFilmCard } from './modal-about';
 
 import { showSpinner } from './show_spinner';
 
@@ -16,20 +20,17 @@ import { showSpinner } from './show_spinner';
 //   onSearchFormSubmit
 // } from './searchFilm';
 
-
 const filmsListLibraryEl = document.querySelector('.favorite-film-list');
 const watchBtnEl = document.querySelector('.btn-watched');
 const queueBtnEl = document.querySelector('.btn-queue');
 
-
 const moviesToWatch = getFromLocalStorage('watched') || [];
 const moviesInQueue = getFromLocalStorage('queue') || [];
-
 
 //const moviesToWatch = getFromLocalStorage('watched');
 //const moviesInQueue = getFromLocalStorage('queue');
 
-console.log(moviesToWatch);
+// console.log(moviesToWatch);
 
 // if (moviesToWatch === undefined) {
 //   moviesToWatch = [];
@@ -39,28 +40,28 @@ console.log(moviesToWatch);
 //   moviesInQueue = [];
 // }
 
-const chunkSize = 20; 
+const chunkSize = 20;
 const queueArray = [];
 const watchedArray = [];
 let pageNumber = 1;
 
 const queueOptions = {
-      totalItems: (moviesInQueue || []).length,
-    page: pageNumber,
-      itemsPerPage: 20,
-      centerAlign: true,
-      
-      visiblePages: 5,
+  totalItems: (moviesInQueue || []).length,
+  page: pageNumber,
+  itemsPerPage: 20,
+  centerAlign: true,
+
+  visiblePages: 5,
 };
-    
+
 const toWatchOptions = {
-      totalItems: (moviesToWatch || []).length,
-    page: pageNumber,
-      itemsPerPage: 20,
-      centerAlign: true,
-      
-      visiblePages: 5,
-    };
+  totalItems: (moviesToWatch || []).length,
+  page: pageNumber,
+  itemsPerPage: 20,
+  centerAlign: true,
+
+  visiblePages: 5,
+};
 
 while ((moviesInQueue || []).length > 0) {
   queueArray.push(moviesInQueue.slice(0, chunkSize));
@@ -72,11 +73,11 @@ while ((moviesToWatch || []).length > 0) {
   moviesToWatch.splice(0, chunkSize);
 }
 
-
 const queuePagination = new Pagination(queuePaginationContainer, queueOptions);
-const toWatchPagination = new Pagination(watchedPaginationContainer, toWatchOptions);
-
-
+const toWatchPagination = new Pagination(
+  watchedPaginationContainer,
+  toWatchOptions
+);
 
 // searchFormEl.addEventListener('submit', onSearchFormSubmit);
 watchBtnEl.addEventListener('click', () => {
@@ -86,16 +87,15 @@ watchBtnEl.addEventListener('click', () => {
   // console.log(getFromLocalStorage('watched').length);
 
   if ((getFromLocalStorage('watched') || []).length < 21) {
-  watchedPaginationContainer.classList.add('is-hidden');
+    watchedPaginationContainer.classList.add('is-hidden');
   } else {
-  watchedPaginationContainer.classList.remove('is-hidden');
+    watchedPaginationContainer.classList.remove('is-hidden');
 
-  toWatchPagination.on('beforeMove', event => {
-    createandShowFilmsMarkup(watchedArray[event.page - 1]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
-}
-
+    toWatchPagination.on('beforeMove', event => {
+      createandShowFilmsMarkup(watchedArray[event.page - 1]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
 
 queueBtnEl.addEventListener('click', () => {
@@ -108,13 +108,12 @@ queueBtnEl.addEventListener('click', () => {
     queuePaginationContainer.classList.add('is-hidden');
   } else {
     queuePaginationContainer.classList.remove('is-hidden');
-  
-  queuePagination.on('beforeMove', event => {
-    createandShowFilmsMarkup(queueArray[event.page - 1]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
+
+    queuePagination.on('beforeMove', event => {
+      createandShowFilmsMarkup(queueArray[event.page - 1]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
-  
 });
 
 createandShowFilmsMarkup(watchedArray[0]);
@@ -129,9 +128,8 @@ if ((getFromLocalStorage('watched') || []).length < 21) {
   toWatchPagination.on('beforeMove', event => {
     createandShowFilmsMarkup(watchedArray[event.page - 1]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  })
+  });
 }
-  
 
 function createandShowFilmsMarkup(searchFilms) {
   try {
